@@ -32,6 +32,13 @@ class ProfileDeatailsActivity : AppCompatActivity() {
         textVeiw_phone_id.text= phone
         Picasso.get().load(img1).into(circleImg_id)
 
+        if (gender=="male"){
+         Gender_img_id.setImageResource(R.drawable.male)
+
+        }else{
+            Gender_img_id.setImageResource(R.drawable.female)
+
+        }
         profile_backbutton_id.setOnClickListener({
 
             onBackPressed()

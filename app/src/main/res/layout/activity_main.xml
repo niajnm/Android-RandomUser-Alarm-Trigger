@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#80E4F8F8"
+    android:orientation="vertical"
     android:weightSum="5"
     tools:context=".MainActivity">
 
@@ -38,7 +38,7 @@
                 app:layout_constraintHorizontal_bias="0.211"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"/>
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -46,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="28dp"
-                android:textColor="@color/white"
                 android:text="TextView"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,22 +72,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2.8"
-        android:orientation="vertical"
         android:background="#1BDFE8E8"
+        android:orientation="vertical"
         android:weightSum="3">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
             android:orientation="horizontal"
             android:weightSum="3">
 
             <com.google.android.material.card.MaterialCardView
-               android:id="@+id/cardUser_id"
+                android:id="@+id/cardUser_id"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_vertical"
@@ -131,8 +131,8 @@
                 android:id="@+id/cardView_profile_id"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
                 android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
 
                 android:layout_weight="1">
 
@@ -169,11 +169,11 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-             android:id="@+id/cardHistory_id"
+                android:id="@+id/cardHistory_id"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
                 android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
 
                 android:layout_weight="1">
 
@@ -191,7 +191,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/shape_round"
                         android:padding="8dp"
-                        android:src="@drawable/ic_baseline_local_activity_24"
+                        android:src="@drawable/ic_baseline_history_24"
 
                         />
 
@@ -201,25 +201,21 @@
                         android:layout_gravity="center"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:text="User" />
+                        android:text="History" />
 
 
                 </LinearLayout>
 
-
             </com.google.android.material.card.MaterialCardView>
-
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
-
+            android:layout_weight="1"
             android:orientation="horizontal"
-
             android:weightSum="3">
 
             <com.google.android.material.card.MaterialCardView
@@ -346,8 +342,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
 
             android:weightSum="3">

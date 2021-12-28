@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import java.util.ArrayList
 
 class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, VERSION_NUM) {
 
@@ -46,9 +47,16 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         return sqLiteDatabase.rawQuery("SELECT * FROM $TABLE_NAME ORDER BY id_ DESC", null)
     }
 
+    fun loadDataASC(): Cursor {
+        val sqLiteDatabase = this.writableDatabase
+        return sqLiteDatabase.rawQuery("SELECT * FROM $TABLE_NAME ORDER BY id_ ASC LIMIT 1", null)
+    }
 
-   fun setHistory(name: String?, gender: String?, mail: String?) {
+
+   fun dataDelete(numId: String?) {
        val db: SQLiteDatabase = getWritableDatabase()
+       db.execSQL("DELETE FROM User_History WHERE id_=$numId")
+
 
 
 
@@ -79,7 +87,27 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
        }
 
 
-       //db.execSQL("Insert into $TABLE_NAME ( $name, $gender,mail);")
+    fun loadData(cursor: Cursor): ArrayList<DataModel> {
+
+        val dataList: ArrayList<DataModel> = ArrayList<DataModel>()
+        if (cursor.count == 0) {
+
+        } else {
+            while (cursor.moveToNext()) {
+                val dataResponse = DataModel()
+                dataResponse.historyID = cursor.getString(0)
+                dataResponse.historyName = cursor.getString(1)
+                dataResponse.historyAge = cursor.getString(2)
+                dataResponse.historyGender = cursor.getString(3)
+                dataResponse.historyCountry = cursor.getString(4)
+                dataResponse.historyPhone = cursor.getString(5)
+                dataResponse.historyMail = cursor.getString(6)
+                dataResponse.historyImg = cursor.getString(7)
+                dataList.add(dataResponse)
+            }
+        }
+        return dataList
+    }
 
 
 

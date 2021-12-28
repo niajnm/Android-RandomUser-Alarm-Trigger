@@ -45,12 +45,12 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val userPosition = userList[position]
 
-        val firstName = userPosition.name.first
+        val firstName = userPosition.name.first.toString()
         val userGender = userPosition.gender
         val userMail = userPosition.email
         val userlocation = userPosition.location.country.toString()
         val userphone = userPosition.phone
-        val userAge = userPosition.phone
+        val userAge = userPosition.cell
         val userImage2 = userPosition.picture.medium
         val imgData: String? = userPosition.picture.large
 

@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        var databaseHelper = DatabaseHelper(this)
-
         cardUser_id.setOnClickListener({
             val intent = Intent(this,UserActivity::class.java)
             startActivity(intent)

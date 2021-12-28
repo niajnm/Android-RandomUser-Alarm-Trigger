@@ -12,5 +12,8 @@ class DataModel {
     var historyImg: String? = null
 
 
+    var historyDeleteId: String? = null
+
+
 
 }
