@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Random user</string>
+
+    <string-array name="medicine_name">
+        <item>A B1</item>
+        <item>A cal 500</item>
+        <item>A clox</item>
+        <item>B Mycin</item>
+        <item>B one</item>
+        <item>C flox</item>
+        <item>C zinic</item>
+        <item>D zinic</item>
+        <item> zinic</item>
+
+    </string-array>
 </resources>

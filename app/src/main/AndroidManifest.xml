@@ -11,10 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RandomUser">
         <activity
+            android:name=".AlarmClock.AlarmCreateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlarmClock.AlarmActivity2"
+            android:exported="false" />
+        <activity
             android:name=".HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Users.ProfileDeatailsActivity"
+            android:name=".ProfileDeatailsActivity"
             android:exported="false" />
         <activity android:name=".UserActivity" />
         <activity
@@ -26,6 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".AlarmClock.AlarmReceiver" />
     </application>
 
 </manifest>

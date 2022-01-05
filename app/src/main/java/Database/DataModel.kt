@@ -10,9 +10,17 @@ class DataModel {
     var historyPhone: String? = null
     var historyMail: String? = null
     var historyImg: String? = null
-
-
     var historyDeleteId: String? = null
+
+    var alarmTime: String? = null
+    var alarmTMilsec: String? = null
+    var medicineName: String? = null
+    var alarmDays: String? = null
+
+
+
+
+
 
 
 

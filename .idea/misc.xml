@@ -3,13 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm2.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm_create.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_main.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_profile_deatails.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/alarm_item_layout.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/alarm_picker_dialogue_layout.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/sample_item_layout.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/drawable/ic_baseline_school_24.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1787037037037037" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/drawable/shape_round.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/drawable/shapemenu_back.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/activity_2.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/activity_alarm.xml" value="0.22" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/activity_history.xml" value="0.22" />
-        <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/activity_profile_deatails.xml" value="0.25" />
+        <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/activity_test.xml" value="0.1" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/activity_user.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/layout/sample_item_layout.xml" value="0.16" />
       </map>

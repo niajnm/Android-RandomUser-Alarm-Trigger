@@ -2,15 +2,12 @@ package com.example.randomuser
 
 import Database.DataModel
 import Database.DatabaseHelper
-import android.content.ContentValues
 import android.content.Intent
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.randomuser.Users.ProfileDeatailsActivity
 import kotlinx.android.synthetic.main.activity_history.*
 import java.util.ArrayList
 

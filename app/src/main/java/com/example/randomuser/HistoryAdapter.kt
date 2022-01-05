@@ -1,16 +1,13 @@
 package com.example.randomuser
 
 import Database.DataModel
-import android.content.ContentValues
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.randomuser.model.Result
 import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
@@ -38,17 +35,13 @@ class HistoryAdapter (var context: Context, var rdata :ArrayList<DataModel>) : R
 
     }
 
-
-
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):HistoryAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(context)
         val view = layoutInflater.inflate(R.layout.sample_item_layout, parent, false)
         return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: HistoryAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val userPosition = rdata[position]
 
         val firstName = userPosition.historyName
