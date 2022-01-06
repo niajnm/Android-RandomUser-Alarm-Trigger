@@ -13,11 +13,9 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.randomuser.HistoryAdapter
 import com.example.randomuser.R
 import kotlinx.android.synthetic.main.activity_alarm_create.*
-import kotlinx.android.synthetic.main.activity_history.*
+import java.time.DayOfWeek
 import java.util.*
 
 class AlarmCreateActivity : AppCompatActivity() {
@@ -31,10 +29,10 @@ class AlarmCreateActivity : AppCompatActivity() {
     var dialogView: View? = null
     var medicine: ArrayAdapter<String>? = null
     var flag = 0
-    var alarmDataHelper : DatabaseHelper?=null
+    var alarmDataHelper: DatabaseHelper? = null
     var medicineName: String? = null
     var readableTime: String? = null
-
+    var readableTime_2: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,17 +56,22 @@ class AlarmCreateActivity : AppCompatActivity() {
             showTimePicker2()
         }
 
-        setalarmbutton_id.setOnClickListener {
+        setAlarmButton_id.setOnClickListener {
 
+            medicineName = autoCompleteText_id.text.toString()
             if (flag == 0) {
                 setAlarm1()
 
             } else if (flag == 2) {
-                setAlarm1()
                 setAlarm2()
             } else {
 
             }
+
+            finish()
+            val intent = Intent(this, AlarmActivity2::class.java)
+            startActivity(intent)
+
         }
 
         btn1.setOnClickListener {
@@ -89,9 +92,7 @@ class AlarmCreateActivity : AppCompatActivity() {
         }
     }
 
-
     private fun showTimePicker1() {
-        //--------< open_TimePickerDialog() >--------
         val hourOfDay = 0
         val minute = 0
         val is24HourView = false
@@ -100,10 +101,10 @@ class AlarmCreateActivity : AppCompatActivity() {
         //Theme_Holo_Light_DarkActionBar  //*Top Position
         val _timePickerDialog = TimePickerDialog(
             this, android.R.style.Theme_Holo_Light_Dialog,
-            { timePicker, i, i1 -> //*Return values
+            { timePicker, i, i1 ->
                 if (i == 12 && i1 > 0) {
 
-                    readableTime = String.format("%02d", i) + " : " + String.format(
+                    readableTime = String.format("%02d", i) + ":" + String.format(
                         "%02d",
                         i1
                     ) + "PM"
@@ -111,20 +112,20 @@ class AlarmCreateActivity : AppCompatActivity() {
 
                 } else if (i == 0) {
                     readableTime =
-                        String.format("%02d", i + 12) + " : " + String.format(
+                        String.format("%02d", i + 12) + ":" + String.format(
                             "%02d",
                             i1
                         ) + "AM"
                     textTime_id.text = readableTime
                 } else if (i > 12) {
                     readableTime =
-                        String.format("%02d", i - 12) + " : " + String.format(
+                        String.format("%02d", i - 12) + ":" + String.format(
                             "%02d",
                             i1
                         ) + "PM"
                     textTime_id.text = readableTime
                 } else {
-                    readableTime = String.format("%02d", i) + " : " + String.format(
+                    readableTime = String.format("%02d", i) + ":" + String.format(
                         "%02d",
                         i1
                     ) + "AM"
@@ -145,40 +146,47 @@ class AlarmCreateActivity : AppCompatActivity() {
     }
 
     private fun showTimePicker2() {
-        //--------< open_TimePickerDialog() >--------
         val hourOfDay = 0
         val minute = 0
         val is24HourView = false
 
-        //Theme_Holo_Light_Dialog
-        //Theme_Holo_Light_DarkActionBar
         val _timePickerDialog = TimePickerDialog(
             this, android.R.style.Theme_Holo_Light_Dialog,
             { timePicker, i, i1 -> //*Return values
                 if (i == 12 && i1 > 0) {
-                    textTime2_id.text =
-                        String.format("%02d", i) + " : " + String.format(
-                            "%02d",
-                            i1
-                        ) + "PM"
+
+                    readableTime_2 = String.format("%02d", i) + ":" + String.format(
+                        "%02d",
+                        i1
+                    ) + "PM"
+                    textTime2_id.text = readableTime_2
+
                 } else if (i == 0) {
-                    textTime2_id.text =
-                        String.format("%02d", i + 12) + " : " + String.format(
+                    readableTime_2 =
+                        String.format("%02d", i + 12) + ":" + String.format(
                             "%02d",
                             i1
                         ) + "AM"
+                    textTime2_id.text = readableTime_2
                 } else if (i > 12) {
-                    textTime2_id.text =
-                        String.format("%02d", i - 12) + " : " + String.format(
+                    readableTime_2 =
+                        String.format("%02d", i - 12) + ":" + String.format(
                             "%02d",
                             i1
                         ) + "PM"
+                    textTime2_id.text = readableTime_2
                 } else {
-                    textTime2_id.text = String.format("%02d", i) + " : " + String.format(
+                    readableTime_2 = String.format("%02d", i) + ":" + String.format(
                         "%02d",
                         i1
                     ) + "AM"
+                    textTime2_id.text = readableTime_2
                 }
+                calender2 = Calendar.getInstance()
+                calender2.set(Calendar.HOUR_OF_DAY, i)
+                calender2.set(Calendar.MINUTE, i1)
+                calender2.set(Calendar.SECOND, 0)
+                calender2.set(Calendar.MILLISECOND, 0)
 
                 Toast.makeText(this, "i=$i i1=$i1", Toast.LENGTH_SHORT).show()
             }, hourOfDay, minute, is24HourView
@@ -186,14 +194,8 @@ class AlarmCreateActivity : AppCompatActivity() {
         _timePickerDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         _timePickerDialog.setTitle("Select a Time")
         _timePickerDialog.show()
-        //--------</ open_TimePickerDialog() >--------
-        calender2 = Calendar.getInstance()
-        calender2.set(Calendar.HOUR_OF_DAY, hourOfDay)
-        calender2.set(Calendar.MINUTE, minute)
-        calender2.set(Calendar.SECOND, 0)
-        calender2.set(Calendar.MILLISECOND, 0)
-
     }
+
 
     //   private fun setAlarm() {
 //        calender2.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY)
@@ -217,8 +219,12 @@ class AlarmCreateActivity : AppCompatActivity() {
 //    }
     //  }
 
-    private fun repeatingAlarm2() {
+    private fun repeatingAlarm(dayOfWeek: Int) {
 
+        calender.set(Calendar.DAY_OF_WEEK, dayOfWeek)
+        if (calender.timeInMillis < System.currentTimeMillis()) {
+            calender.add(Calendar.DAY_OF_YEAR, 7)
+        }
         val thuReq: Long = Calendar.getInstance().timeInMillis + 1
         var repReqCode = thuReq.toInt()
 
@@ -243,10 +249,10 @@ class AlarmCreateActivity : AppCompatActivity() {
         val alarmTimeMilsec = calender.timeInMillis.toInt()
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val thuReq: Long = Calendar.getInstance().timeInMillis + 1
-        var repReqCode = thuReq.toInt()
+        var reqReqCode = thuReq.toInt()
         val intent = Intent(this, AlarmReceiver::class.java)
         intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-        val pendingIntent = PendingIntent.getBroadcast(this, repReqCode, intent, 0)
+        val pendingIntent = PendingIntent.getBroadcast(this, reqReqCode, intent, 0)
 
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
@@ -254,35 +260,60 @@ class AlarmCreateActivity : AppCompatActivity() {
             24 * 60 * 60 * 1000,
             pendingIntent
         )
-        val status ="everyday"
-      alarmDataHelper?.insertAlarmData(medicineName,readableTime,alarmTimeMilsec,repReqCode,status)
+        val status = "everyday"
+        val reqReqCode2 = 0
+        alarmDataHelper?.insertAlarmData(
+            medicineName,
+            readableTime,
+            alarmTimeMilsec,
+            reqReqCode,
+            reqReqCode2,
+            status
+        )
         Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
 
     }
 
     private fun setAlarm2() {
 
+        val totReadabletime= readableTime+" "+readableTime_2
+
+        val alarmTimeMilsec = calender.timeInMillis.toInt()
+        val alarmTimeMilsec2 = calender2.timeInMillis.toInt()
+
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val thuReq: Long = Calendar.getInstance().timeInMillis + 1
-        var repReqCode = thuReq.toInt()
+        var repReqCode1 = thuReq.toInt()
+
         val intent = Intent(this, AlarmReceiver::class.java)
         intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-        val pendingIntent = PendingIntent.getBroadcast(this, repReqCode, intent, 0)
+        val pendingIntent = PendingIntent.getBroadcast(this, repReqCode1, intent, 0)
+
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calender.timeInMillis,
+            24 * 60 * 60 * 1000,
+            pendingIntent
+        )
+        val thuReq2: Long = Calendar.getInstance().timeInMillis +2
+        var repReqCode2 = thuReq2.toInt()
+        pi = PendingIntent.getBroadcast(this, repReqCode2, intent, 0)
 
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
             calender2.timeInMillis,
             24 * 60 * 60 * 1000,
-            pendingIntent
+            pi
         )
-//        pi = PendingIntent.getBroadcast(this, 1, intent, 0)
-//
-//        alarmManager.setRepeating(
-//            AlarmManager.RTC_WAKEUP,
-//            calender2.timeInMillis,
-//            24*60*60*1000,
-//            pi
-//        )
+        val status = "everyday"
+        alarmDataHelper?.insertAlarmData(
+            medicineName,
+            totReadabletime,
+            alarmTimeMilsec,
+            repReqCode1,
+            repReqCode2,
+            status
+        )
         Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
     }
 
@@ -300,14 +331,12 @@ class AlarmCreateActivity : AppCompatActivity() {
     private fun createNotificationChannel() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
             val name = "Alarmclock Channel"
             val description = " Reminder Alarm manager"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val notificationChannel = NotificationChannel(CHANNELID, name, importance)
             notificationChannel.description = description
-            val notificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(notificationChannel)
         }
     }

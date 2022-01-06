@@ -27,7 +27,8 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
 
         private const val TITLE = "med_name"
         private const val CTIME = "c_time"
-        private const val REQC = "request_code"
+        private const val REQC = "request_code_1"
+        private const val REQC2 = "request_cod_2"
         private const val FLAG = "flag"
         private const val WEEKDAYS = "week_days"
         private const val Time = "alarm_time"
@@ -36,7 +37,7 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         private const val VERSION_NUM = 3
         private const val CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + ID + " INTEGER  PRIMARY KEY AUTOINCREMENT," + NAME + " VARCHAR(50) UNIQUE," + AGE + " INT," + GENDER + " VARCHAR(5), "+ COUNTRY + " VARCHAR(20)," + PHONE + " VARCHAR(15), " + MAIL + " VARCHAR(50), $IMG VARCHAR(500))"
         private const val ALARM_TABLE =
-            "CREATE TABLE $ALARM_TABLE_NAME($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$TITLE VARCHAR(50) UNIQUE,$Time VARCHAR(20),$CTIME INT(100),$REQC INT(200), $FLAG VARCHAR(50), $WEEKDAYS VARCHAR(500))"
+            "CREATE TABLE $ALARM_TABLE_NAME($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$TITLE VARCHAR(50) UNIQUE,$Time VARCHAR(20),$CTIME INT(100),$REQC INT(200),$REQC2 INT(200), $FLAG VARCHAR(50), $WEEKDAYS VARCHAR(500))"
 
     }
 
@@ -123,7 +124,8 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         medicineName: String?,
         readableTime: String?,
         alarmTimeMilsec: Int,
-        repReqCode: Int,
+            repReqCode1: Int,
+        repReqCode2: Int,
         status: String
     ) {
         val sqLiteDatabase = this.writableDatabase
@@ -131,7 +133,8 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         contentValues.put(TITLE, medicineName)
         contentValues.put(Time, readableTime)
         contentValues.put(CTIME, alarmTimeMilsec)
-        contentValues.put(REQC, repReqCode)
+        contentValues.put(REQC, repReqCode1  )
+        contentValues.put(REQC2, repReqCode2)
         contentValues.put(WEEKDAYS, status)
         sqLiteDatabase.insert(ALARM_TABLE_NAME, null, contentValues)
     }
@@ -147,7 +150,7 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
                 alarmData.medicineName = cursor.getString(1)
                 alarmData.alarmTime = cursor.getString(2)
                 alarmData.alarmTMilsec = cursor.getString(3)
-                alarmData.alarmDays = cursor.getString(6)
+                alarmData.alarmDays = cursor.getString(7)
 
                 dataList.add(alarmData)
             }

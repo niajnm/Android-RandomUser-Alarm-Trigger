@@ -18,23 +18,18 @@ import java.util.ArrayList
 
 class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) : RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
 
-
-
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var viewTitle: TextView
         var viewStatus: TextView
         var viewTime: TextView
-
         var imageViewLogo: ImageView
 
         init {
             viewTitle = itemView.findViewById(R.id.MedicineTextView_id)
             viewStatus = itemView.findViewById(R.id.StatusTextView_id)
             viewTime = itemView.findViewById(R.id.alarmTextViewT_id)
-
             imageViewLogo = itemView.findViewById(R.id.alarmImg_id)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -44,13 +39,9 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) : Recy
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
             holder.viewTime.text= rdata[position].alarmTime
             holder.viewTitle.text= rdata[position].medicineName
             holder.viewStatus.text= rdata[position].alarmDays
-
-
-
     }
 
     override fun getItemCount(): Int {
@@ -58,7 +49,5 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) : Recy
 
         Log.d(ContentValues.TAG, "getItemCount: " + rdata.size)
     }
-
-
 
 }

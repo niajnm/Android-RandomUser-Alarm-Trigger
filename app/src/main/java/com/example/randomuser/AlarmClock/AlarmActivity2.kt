@@ -27,6 +27,8 @@ class AlarmActivity2 : AppCompatActivity() {
         floating_button_Id.setOnClickListener {
             val intent = Intent(this, AlarmCreateActivity::class.java)
             startActivity(intent)
+
+            finish()
         }
         alarmDisplay()
     }

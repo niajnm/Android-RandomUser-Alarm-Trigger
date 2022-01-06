@@ -29,7 +29,7 @@ class UserActivity : AppCompatActivity() {
 
         setSupportActionBar(usertoolbar_id)
         title = "Users"
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         databaseHelper = DatabaseHelper(this)
         val sqLiteDatabase = databaseHelper!!.writableDatabase
 
