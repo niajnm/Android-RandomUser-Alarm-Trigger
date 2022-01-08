@@ -7,16 +7,66 @@
     android:orientation="vertical">
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CheckBox" />
+        android:buttonTint="@color/mycustom"
+        android:text="Saturday" />
+
+      <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+          android:buttonTint="@color/mycustom"
+        android:text="Sunday" />
+
+      <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+          android:buttonTint="@color/mycustom"
+
+          android:text="Monday" />
+
+      <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+          android:buttonTint="@color/mycustom"
+
+          android:text="Tuesday" />
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/mycustom"
+
+        android:text="Wednesday" />
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/mycustom"
+
+        android:text="Thursday" />
+
+      <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+          android:buttonTint="@color/mycustom"
+
+          android:text="Friday" />
+
 
     <Button
+        android:id="@+id/confirm_button_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Cancel Alarm" />
+        android:text="Confirm" />
 
 
 
