@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_alarm_create.*
 import kotlinx.android.synthetic.main.alarm_picker_dialogue_layout.view.*
 import java.time.DayOfWeek
 import java.util.*
+import kotlin.math.log
 
 class AlarmCreateActivity : AppCompatActivity() {
 
@@ -39,6 +40,12 @@ class AlarmCreateActivity : AppCompatActivity() {
     var readableTime_2: String? = null
     var flagCheckbox = 0
 
+    var autogenerateKey: Int = 1
+
+    var medicine1 = ""
+    var medicine2 = ""
+    var medicine3 = ""
+    var medicine4 = ""
     private var sat = ""
     private var sun = ""
     private var mon = ""
@@ -64,6 +71,8 @@ class AlarmCreateActivity : AppCompatActivity() {
 
         autoCompleteText3_id.threshold = 1
         autoCompleteText3_id.setAdapter(medicine)
+        autoCompleteText4_id.threshold = 1
+        autoCompleteText4_id.setAdapter(medicine)
 
         buttonAdd_id.setOnClickListener {
             medflag++
@@ -112,93 +121,98 @@ class AlarmCreateActivity : AppCompatActivity() {
             val sharedPreferences = getSharedPreferences("my_sharedPreference", 0)
             val editor = sharedPreferences.edit()
 
-            if (flagCheckbox>0){
-                val satu = sharedPreferences.getBoolean("sat",true)
+            if (flagCheckbox > 0) {
+                val satu = sharedPreferences.getBoolean("sat", true)
                 dialogView!!.checkBox1.isChecked = satu
-                val sund = sharedPreferences.getBoolean("sun",true)
+                val sund = sharedPreferences.getBoolean("sun", true)
                 dialogView!!.checkBox2.isChecked = sund
-                val mond = sharedPreferences.getBoolean("mon",true)
+                val mond = sharedPreferences.getBoolean("mon", true)
                 dialogView!!.checkBox3.isChecked = mond
-                val tues = sharedPreferences.getBoolean("tue",true)
+                val tues = sharedPreferences.getBoolean("tue", true)
                 dialogView!!.checkBox4.isChecked = tues
-                val wedn = sharedPreferences.getBoolean("wed",true)
+                val wedn = sharedPreferences.getBoolean("wed", true)
                 dialogView!!.checkBox5.isChecked = wedn
-                val thus = sharedPreferences.getBoolean("thu",true)
+                val thus = sharedPreferences.getBoolean("thu", true)
                 dialogView!!.checkBox6.isChecked = thus
-                val frid = sharedPreferences.getBoolean("fri",true)
+                val frid = sharedPreferences.getBoolean("fri", true)
                 dialogView!!.checkBox7.isChecked = frid
             }
 
             dialogView!!.confirm_button_id.setOnClickListener {
                 stringBuffer.setLength(0)
 
+                var key: Long = (System.currentTimeMillis()+12)
+                autogenerateKey = key.toInt()
+
+                Log.d("mykey", "key:"+autogenerateKey)
+
                 if (dialogView!!.checkBox1.isChecked) {
-                    sat = "1"
+                    sat = "7"
                     editor.putBoolean("sat", true)
                     editor.apply()
                     stringBuffer.append("Saturday ")
-                }else{
-                    editor.putBoolean("sat",false)
+                } else {
+                    editor.putBoolean("sat", false)
                     editor.apply()
                 }
                 if (dialogView!!.checkBox2.isChecked) {
-                    sun = "2"
+                    sun = "1"
                     editor.putBoolean("sun", true)
                     editor.apply()
                     stringBuffer.append("Sunday ")
 
-                }else{
-                    editor.putBoolean("sun",false)
+                } else {
+                    editor.putBoolean("sun", false)
                     editor.apply()
                 }
                 if (dialogView!!.checkBox3.isChecked) {
-                    mon = "3"
+                    mon = "2"
                     editor.putBoolean("mon", true)
                     editor.apply()
                     stringBuffer.append("Monday ")
 
-                }else{
-                    editor.putBoolean("mon",false)
+                } else {
+                    editor.putBoolean("mon", false)
                     editor.apply()
                 }
                 if (dialogView!!.checkBox4.isChecked) {
-                    tue = "4"
+                    tue = "3"
                     editor.putBoolean("tue", true)
                     editor.apply()
                     stringBuffer.append("Tuesday ")
 
-                }else{
-                    editor.putBoolean("tue",false)
+                } else {
+                    editor.putBoolean("tue", false)
                     editor.apply()
                 }
                 if (dialogView!!.checkBox5.isChecked) {
-                    wed = "5"
+                    wed = "4"
                     editor.putBoolean("wed", true)
                     editor.apply()
                     stringBuffer.append("Wednesday ")
 
-                }else{
-                    editor.putBoolean("wed",false)
+                } else {
+                    editor.putBoolean("wed", false)
                     editor.apply()
                 }
                 if (dialogView!!.checkBox6.isChecked) {
-                    thu = "6"
+                    thu = "5"
                     editor.putBoolean("thu", true)
                     editor.apply()
                     stringBuffer.append("Thursday ")
 
-                }else{
-                    editor.putBoolean("thu",false)
+                } else {
+                    editor.putBoolean("thu", false)
                     editor.apply()
                 }
                 if (dialogView!!.checkBox7.isChecked) {
-                    fri = "7"
+                    fri = "6"
                     editor.putBoolean("fri", true)
                     editor.apply()
                     stringBuffer.append("Friday ")
 
-                }else{
-                    editor.putBoolean("fri",false)
+                } else {
+                    editor.putBoolean("fri", false)
                     editor.apply()
                 }
 
@@ -212,30 +226,61 @@ class AlarmCreateActivity : AppCompatActivity() {
 
         setAlarmButton_id.setOnClickListener {
 
+            medicine1 = autoCompleteText_id.text.toString()
+            medicine2 = autoCompleteText2_id.text.toString()
+            medicine3 = autoCompleteText3_id.text.toString()
+            medicine4 = autoCompleteText4_id.text.toString()
+            medicineName =  medicine1 +" "+medicine2+" "+medicine3+" "+medicine4
 
-            if (Calendar.getInstance() == null){
 
-                Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
-            }else{
-                medicineName = autoCompleteText_id.text.toString()
+            if (flag == 0 && flag2 == 0) {
+                setAlarm1()
 
-                if (flag == 0 && flag2 == 0) {
-                    setAlarm1()
+            } else if (flag == 0 && flag2 == 5) {
+                weekDayAlarm()
 
-                } else if (flag == 0 && flag2 == 5) {
-                    weekDayAlarm()
+                val repReqCode = 1
+                val reqReqCode2 = 0
+                val totReadabletime = readableTime + " " + readableTime_2
+                val status = stringBuffer.toString()
+                val alarmTimeMilsec = calender.timeInMillis.toInt()
 
-                } else if (flag == 2) {
-                    setAlarm2()
-                } else {
+                alarmDataHelper?.insertAlarmData(
+                    medicineName,
+                    readableTime,
+                    alarmTimeMilsec,
+                    repReqCode,
+                    reqReqCode2,
+                    status,
+                    autogenerateKey
+                )
 
-                }}
+            } else if (flag == 2 && flag2 == 0) {
+                setAlarm2()
+            } else if (flag == 2 && flag2 == 5) {
+                weekDayAlarm2()
 
+                val repReqCode = 1
+                val reqReqCode2 = 0
+                val totReadabletime = readableTime + " " + readableTime_2
+                val status = stringBuffer.toString()
+                val alarmTimeMilsec = calender.timeInMillis.toInt()
+
+                alarmDataHelper?.insertAlarmData(
+                    medicineName,
+                    totReadabletime,
+                    alarmTimeMilsec,
+                    repReqCode,
+                    reqReqCode2,
+                    status,
+                    autogenerateKey
+                )
+            } else {
+            }
 
             finish()
             val intent = Intent(this, AlarmActivity2::class.java)
             startActivity(intent)
-
         }
 
         btn1.setOnClickListener {
@@ -252,9 +297,7 @@ class AlarmCreateActivity : AppCompatActivity() {
             textTime2_id.isVisible = true
             textTime3_id.isVisible = true
             flag = 3
-
         }
-
     }
 
     private fun showTimePicker1() {
@@ -384,35 +427,6 @@ class AlarmCreateActivity : AppCompatActivity() {
 //    }
 //  }
 
-    private fun repeatingAlarm(dayOfWeek: Int) {
-
-
-        calender = Calendar.getInstance()
-        calender.set(Calendar.DAY_OF_WEEK, dayOfWeek)
-        if (calender.timeInMillis < System.currentTimeMillis()) {
-            calender.add(Calendar.DAY_OF_YEAR, 7)
-        }
-        val thuReq: Long = Calendar.getInstance().timeInMillis + 6
-        var repReqCode = thuReq.toInt()
-        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(this, AlarmReceiver::class.java)
-//        intent.action = "okay"
-//        val time
-//        intent.putExtra("time", time)
-        intent.flags = Intent.FLAG_ACTIVITY_MULTIPLE_TASK
-
-        val pendingIntent = PendingIntent.getBroadcast(this, repReqCode, intent, 0)
-
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calender.timeInMillis,
-            // Interval one day
-            24 * 60 * 60 * 1000 * 7,
-            pendingIntent
-        )
-        Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
-
-    }
 
     private fun setAlarm1() {
         val alarmTimeMilsec = calender.timeInMillis.toInt()
@@ -437,7 +451,8 @@ class AlarmCreateActivity : AppCompatActivity() {
             alarmTimeMilsec,
             reqReqCode,
             reqReqCode2,
-            status
+            status,
+            autogenerateKey
         )
         Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
 
@@ -481,49 +496,189 @@ class AlarmCreateActivity : AppCompatActivity() {
             alarmTimeMilsec,
             repReqCode1,
             repReqCode2,
-            status
+            status,
+            autogenerateKey
         )
         Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
     }
 
     private fun weekDayAlarm() {
-        if (sat == "1") {
-            repeatingAlarm(1)
+        if (sat == "7") {
+            repeatingAlarm(7, "Saturday")
             Log.d("tag", "saturday")
         }
-        if (sun == "2") {
-            repeatingAlarm(2)
-
+        if (sun == "1") {
+            repeatingAlarm(1, "Sunday")
             Log.d("tag", "sunday")
         }
-        if (mon == "3") {
-            repeatingAlarm(3)
-
+        if (mon == "2") {
+            repeatingAlarm(2, "Monday")
             Log.d("tag", "monday")
         }
-        if (tue == "4") {
-            repeatingAlarm(4)
-
+        if (tue == "3") {
+            repeatingAlarm(3, "Tuesday")
             Log.d("tag", "tuesday")
         }
-        if (wed == "5") {
-            repeatingAlarm(5)
-
+        if (wed == "4") {
+            repeatingAlarm(4, "Wednesday")
             Log.d("tag", "wednesday")
         }
-        if (thu == "6") {
-            repeatingAlarm(6)
-
+        if (thu == "5") {
+            repeatingAlarm(5, "Thursday")
         }
-        if (fri == "7") {
-            repeatingAlarm(7)
+        if (fri == "6") {
+            repeatingAlarm(6, "Friday")
 
+            Log.d("tag", "friday")
+        } else {
+        }
+    }
+
+    private fun repeatingAlarm(dayOfWeek: Int, dayName: String) {
+
+        val status = stringBuffer.toString()
+        val alarmTimeMilsec = calender.timeInMillis.toInt()
+
+        calender = Calendar.getInstance()
+        calender.set(Calendar.DAY_OF_WEEK, dayOfWeek)
+        if (calender.timeInMillis < System.currentTimeMillis()) {
+            calender.add(Calendar.DAY_OF_YEAR, 7)
+        }
+        val thuReq: Long = Calendar.getInstance().timeInMillis + 6
+        var repReqCode = thuReq.toInt()
+        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, AlarmReceiver::class.java)
+//        intent.action = "okay"
+//        val time
+//        intent.putExtra("time", time)
+        intent.flags = Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+
+        val pendingIntent = PendingIntent.getBroadcast(this, repReqCode, intent, 0)
+
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calender.timeInMillis,
+            24 * 60 * 60 * 1000 * 7,
+            pendingIntent
+        )
+
+        val reqReqCode2 = 0
+
+        alarmDataHelper?.insertMultiAlarmData(
+            medicineName,
+            readableTime,
+            alarmTimeMilsec,
+            repReqCode,
+            reqReqCode2,
+            dayName,
+            autogenerateKey
+        )
+        Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun weekDayAlarm2() {
+        if (sat == "7") {
+            twiceRepeatingAlarm(7, 7,"Saturday")
+            Log.d("tag", "saturday")
+        }
+        if (sun == "1") {
+
+            twiceRepeatingAlarm(1, 1,"Sunday")
+            Log.d("tag", "sunday")
+        }
+        if (mon == "2") {
+            twiceRepeatingAlarm(2, 2,"Monday")
+            Log.d("tag", "monday")
+        }
+        if (tue == "3") {
+            twiceRepeatingAlarm(3, 3,"Tuesday")
+            Log.d("tag", "tuesday")
+        }
+        if (wed == "4") {
+            twiceRepeatingAlarm(4, 4,"Wednesday")
+            Log.d("tag", "wednesday")
+        }
+        if (thu == "5") {
+            twiceRepeatingAlarm(5, 5,"Thursday")
+        }
+        if (fri == "6") {
+            twiceRepeatingAlarm(6, 6,"Friday")
             Log.d("tag", "friday")
         } else {
         }
 
     }
 
+    private fun twiceRepeatingAlarm(dayOfWeek: Int, dayOfWeek2: Int, dayName: String) {
+
+        val totReadabletime = readableTime +" "+ readableTime_2
+
+        val alarmTimeMilsec = calender.timeInMillis.toInt()
+
+        calender = Calendar.getInstance()
+        calender.set(Calendar.DAY_OF_WEEK, dayOfWeek)
+        if (calender.timeInMillis < System.currentTimeMillis()) {
+            calender.add(Calendar.DAY_OF_YEAR, 7)
+        }
+
+        calender2 = Calendar.getInstance()
+        calender2.set(Calendar.DAY_OF_WEEK, dayOfWeek2)
+        if (calender2.timeInMillis < System.currentTimeMillis()) {
+            calender2.add(Calendar.DAY_OF_YEAR, 7)
+        }
+        val thuReq: Long = Calendar.getInstance().timeInMillis + 6
+        var repReqCode = thuReq.toInt()
+
+        val thuReq2: Long = Calendar.getInstance().timeInMillis + 7
+        var repReqCode2 = thuReq2.toInt()
+        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, AlarmReceiver::class.java)
+//        intent.action = "okay"
+//        val time
+//        intent.putExtra("time", time)
+        intent.flags = Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+
+        val pendingIntent = PendingIntent.getBroadcast(this, repReqCode, intent, 0)
+
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calender.timeInMillis,
+            // Interval one day
+            24 * 60 * 60 * 1000 * 7,
+            pendingIntent
+        )
+        pi = PendingIntent.getBroadcast(this, repReqCode2, intent, 0)
+
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calender2.timeInMillis,
+            // Interval one day
+            24 * 60 * 60 * 1000 * 7,
+            pi
+        )
+
+        alarmDataHelper?.insertMultiAlarmData(
+            medicineName,
+            totReadabletime,
+            alarmTimeMilsec,
+            repReqCode,
+            repReqCode2,
+            dayName,
+            autogenerateKey
+        )
+
+        Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        finish()
+        val intent = Intent(this, AlarmActivity2::class.java)
+        startActivity(intent)
+
+    }
 
     private fun cencelAlarm() {
         val intent = Intent(this, AlarmReceiver::class.java)

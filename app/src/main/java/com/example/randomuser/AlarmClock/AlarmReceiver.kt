@@ -24,7 +24,7 @@ class AlarmReceiver : BroadcastReceiver() {
             val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 
             val builder = NotificationCompat.Builder(context, "111")
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.drawable.blue_stringart)
                 .setContentTitle("Alarm is running")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)

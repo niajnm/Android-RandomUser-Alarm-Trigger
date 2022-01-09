@@ -8,12 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 import java.util.ArrayList
 
-class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, VERSION_NUM) {
+class DatabaseHelper(var context: Context) :
+    SQLiteOpenHelper(context, DATABASE_NAME, null, VERSION_NUM) {
 
     companion object {
         private const val DATABASE_NAME = "Users_DB"
         private const val TABLE_NAME = "User_History"
         private const val ALARM_TABLE_NAME = "Alarm_history"
+        private const val MULTI_ALARM_TABLE_NAME = "Multiple_Alarm"
 
         private const val COUNTRY = "Country"
         private const val AGE = "Age"
@@ -31,13 +33,18 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         private const val REQC2 = "request_cod_2"
         private const val FLAG = "flag"
         private const val WEEKDAYS = "week_days"
+        private const val Fkey = "frn_Key"
         private const val Time = "alarm_time"
 
         private const val DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME
-        private const val VERSION_NUM = 3
-        private const val CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + ID + " INTEGER  PRIMARY KEY AUTOINCREMENT," + NAME + " VARCHAR(50) UNIQUE," + AGE + " INT," + GENDER + " VARCHAR(5), "+ COUNTRY + " VARCHAR(20)," + PHONE + " VARCHAR(15), " + MAIL + " VARCHAR(50), $IMG VARCHAR(500))"
+        private const val VERSION_NUM = 1
+        private const val CREATE_TABLE =
+            "CREATE TABLE " + TABLE_NAME + "(" + ID + " INTEGER  PRIMARY KEY AUTOINCREMENT," + NAME + " VARCHAR(50) UNIQUE," + AGE + " INT," + GENDER + " VARCHAR(5), " + COUNTRY + " VARCHAR(20)," + PHONE + " VARCHAR(15), " + MAIL + " VARCHAR(50), $IMG VARCHAR(500))"
         private const val ALARM_TABLE =
-            "CREATE TABLE $ALARM_TABLE_NAME($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$TITLE VARCHAR(50) UNIQUE,$Time VARCHAR(20),$CTIME INT(100),$REQC INT(200),$REQC2 INT(200), $FLAG VARCHAR(50), $WEEKDAYS VARCHAR(500))"
+            "CREATE TABLE $ALARM_TABLE_NAME($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$TITLE VARCHAR(50),$Time VARCHAR(20),$CTIME INT(100),$REQC INT(200),$REQC2 INT(200), $FLAG VARCHAR(50), $WEEKDAYS VARCHAR(500),$Fkey Int(200))"
+
+        private const val MULTI_ALARM_TABLE =
+            "CREATE TABLE $MULTI_ALARM_TABLE_NAME($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$TITLE VARCHAR(50),$Time VARCHAR(20),$CTIME INT(100),$REQC INT(200),$REQC2 INT(200),$FLAG VARCHAR(50), $WEEKDAYS VARCHAR(500),$Fkey Int(200))"
 
     }
 
@@ -45,6 +52,7 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         try {
             db?.execSQL(CREATE_TABLE)
             db?.execSQL(ALARM_TABLE)
+            db?.execSQL(MULTI_ALARM_TABLE)
 
             Toast.makeText(context, "oncreate", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
@@ -72,31 +80,32 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
     }
 
 
-   fun dataDelete(numId: String?) {
-       val db: SQLiteDatabase = getWritableDatabase()
-       db.execSQL("DELETE FROM User_History WHERE id_=$numId")
-   }
-       fun insertCartData(
-           name: String?,
-           gender: String?,
-           country: String?,
-           userAge: String,
-           userphone: String,
-           userMail: String?,
-           userImgData: String?
-       ) {
-           val sqLiteDatabase = this.writableDatabase
-           val contentValues = ContentValues()
-           contentValues.put(NAME, name)
-           contentValues.put(GENDER, gender)
-           contentValues.put(COUNTRY, country)
-           contentValues.put(AGE, userAge)
-           contentValues.put(PHONE, userphone)
-           contentValues.put(MAIL, userMail)
-           contentValues.put(IMG, userImgData)
+    fun dataDelete(numId: String?) {
+        val db: SQLiteDatabase = getWritableDatabase()
+        db.execSQL("DELETE FROM User_History WHERE id_=$numId")
+    }
 
-            sqLiteDatabase.insert(TABLE_NAME, null, contentValues)
-       }
+    fun insertCartData(
+        name: String?,
+        gender: String?,
+        country: String?,
+        userAge: String,
+        userphone: String,
+        userMail: String?,
+        userImgData: String?
+    ) {
+        val sqLiteDatabase = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(NAME, name)
+        contentValues.put(GENDER, gender)
+        contentValues.put(COUNTRY, country)
+        contentValues.put(AGE, userAge)
+        contentValues.put(PHONE, userphone)
+        contentValues.put(MAIL, userMail)
+        contentValues.put(IMG, userImgData)
+
+        sqLiteDatabase.insert(TABLE_NAME, null, contentValues)
+    }
 
     fun loadData(cursor: Cursor): ArrayList<DataModel> {
 
@@ -124,19 +133,42 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         medicineName: String?,
         readableTime: String?,
         alarmTimeMilsec: Int,
-            repReqCode1: Int,
+        repReqCode1: Int,
         repReqCode2: Int,
-        status: String
+        status: String,
+        foreignKey : Int
     ) {
         val sqLiteDatabase = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(TITLE, medicineName)
         contentValues.put(Time, readableTime)
         contentValues.put(CTIME, alarmTimeMilsec)
-        contentValues.put(REQC, repReqCode1  )
+        contentValues.put(REQC, repReqCode1)
         contentValues.put(REQC2, repReqCode2)
         contentValues.put(WEEKDAYS, status)
+        contentValues.put(Fkey, foreignKey)
         sqLiteDatabase.insert(ALARM_TABLE_NAME, null, contentValues)
+    }
+
+    fun insertMultiAlarmData(
+        medicineName: String?,
+        readableTime: String?,
+        alarmTimeMilsec: Int,
+        repReqCode1: Int,
+        repReqCode2: Int,
+        status: String,
+        foreignKey : Int
+    ) {
+        val sqLiteDatabase = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(TITLE, medicineName)
+        contentValues.put(Time, readableTime)
+        contentValues.put(CTIME, alarmTimeMilsec)
+        contentValues.put(REQC, repReqCode1)
+        contentValues.put(REQC2, repReqCode2)
+        contentValues.put(WEEKDAYS, status)
+        contentValues.put(Fkey, foreignKey)
+        sqLiteDatabase.insert(MULTI_ALARM_TABLE_NAME, null, contentValues)
     }
 
     fun loadAlarmData(cursor: Cursor): ArrayList<DataModel> {
@@ -157,8 +189,6 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         }
         return dataList
     }
-
-
 
 
 }
