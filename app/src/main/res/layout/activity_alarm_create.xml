@@ -15,10 +15,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="85dp"
             android:background="@color/mycustom"
+            android:gravity="center"
             android:orientation="horizontal">
-
+           <AnalogClock
+               android:layout_gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="80dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -35,6 +39,7 @@
                 android:background="@drawable/white_back_shape"
                 android:singleLine="true"
                 android:text="Medicine Name"
+                android:padding="5dp"
                 android:textColor="@color/white" />
 
             <AutoCompleteTextView
@@ -89,6 +94,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/white_back_shape"
                 android:text="Select Time"
+                android:padding="5dp"
+
                 android:textColor="@color/white" />
 
             <LinearLayout
@@ -134,6 +141,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/white_back_shape"
                 android:text="Schedule"
+                android:padding="5dp"
+
                 android:textColor="@color/white" />
 
             <LinearLayout
@@ -185,6 +194,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/white_back_shape"
                 android:text="Schedule"
+                android:padding="5dp"
+
                 android:textColor="@color/white" />
 
             <LinearLayout

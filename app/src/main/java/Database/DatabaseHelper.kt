@@ -79,10 +79,21 @@ class DatabaseHelper(var context: Context) :
         return sqLiteDatabase.rawQuery("SELECT * FROM $TABLE_NAME ORDER BY id_ ASC LIMIT 1", null)
     }
 
+    fun loadAlarmDatadDelete(magicKey:Int): Cursor {
+        val sqLiteDatabase = this.writableDatabase
+        return sqLiteDatabase.rawQuery("SELECT * FROM $ALARM_TABLE_NAME WHERE frn_key= $magicKey", null)
+    }
+
 
     fun dataDelete(numId: String?) {
         val db: SQLiteDatabase = getWritableDatabase()
         db.execSQL("DELETE FROM User_History WHERE id_=$numId")
+    }
+
+    fun deleteAlarmData(numId: Int) {
+        val db: SQLiteDatabase = getWritableDatabase()
+        db.execSQL("DELETE FROM $ALARM_TABLE_NAME WHERE frn_Key=$numId")
+        db.execSQL("DELETE FROM $MULTI_ALARM_TABLE_NAME WHERE frn_Key=$numId")
     }
 
     fun insertCartData(
@@ -183,6 +194,26 @@ class DatabaseHelper(var context: Context) :
                 alarmData.alarmTime = cursor.getString(2)
                 alarmData.alarmTMilsec = cursor.getString(3)
                 alarmData.alarmDays = cursor.getString(7)
+                alarmData.alarmMagicKey = cursor.getInt(8)
+
+
+                dataList.add(alarmData)
+            }
+        }
+        return dataList
+    }
+
+    fun loadDeleteAlarmData(cursor: Cursor): ArrayList<DataModel> {
+
+        val dataList: ArrayList<DataModel> = ArrayList<DataModel>()
+        if (cursor.count == 0) {
+
+        } else {
+            while (cursor.moveToNext()) {
+                val alarmData = DataModel()
+
+                alarmData.requestCode = cursor.getInt(4)
+                alarmData.requestCode2 = cursor.getInt(5)
 
                 dataList.add(alarmData)
             }

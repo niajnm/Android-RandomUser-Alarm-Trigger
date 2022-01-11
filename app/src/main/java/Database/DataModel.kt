@@ -16,6 +16,10 @@ class DataModel {
     var alarmTMilsec: String? = null
     var medicineName: String? = null
     var alarmDays: String? = null
+    var requestCode: Int? = null
+    var requestCode2: Int? = null
+    var alarmMagicKey : Int? = null
+
 
 
 

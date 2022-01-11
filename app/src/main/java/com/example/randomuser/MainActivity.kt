@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.randomuser.AlarmClock.AlarmActivity2
+import com.example.randomuser.AlarmClock.AlarmReceiver
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AlarmActivity2::class.java)
             startActivity(intent)
         }
+
+
+        val  i = Intent(this, AlarmReceiver::class.java)
+        this.startService(i)
+
 
 
     }

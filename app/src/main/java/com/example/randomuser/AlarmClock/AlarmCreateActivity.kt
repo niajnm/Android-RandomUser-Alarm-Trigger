@@ -39,8 +39,9 @@ class AlarmCreateActivity : AppCompatActivity() {
     var readableTime: String? = null
     var readableTime_2: String? = null
     var flagCheckbox = 0
+    val mgicKey: Long = Calendar.getInstance().timeInMillis + 10
+    var autogenerateKey = mgicKey.toInt()
 
-    var autogenerateKey: Int = 1
 
     var medicine1 = ""
     var medicine2 = ""
@@ -433,6 +434,9 @@ class AlarmCreateActivity : AppCompatActivity() {
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val thuReq: Long = Calendar.getInstance().timeInMillis + 1
         var reqReqCode = thuReq.toInt()
+        if (calender.timeInMillis < System.currentTimeMillis()) {
+            calender.add(Calendar.DAY_OF_YEAR, 1)
+        }
         val intent = Intent(this, AlarmReceiver::class.java)
         intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
         val pendingIntent = PendingIntent.getBroadcast(this, reqReqCode, intent, 0)
@@ -464,6 +468,13 @@ class AlarmCreateActivity : AppCompatActivity() {
 
         val alarmTimeMilsec = calender.timeInMillis.toInt()
         val alarmTimeMilsec2 = calender2.timeInMillis.toInt()
+
+        if (calender.timeInMillis < System.currentTimeMillis()) {
+            calender.add(Calendar.DAY_OF_YEAR, 1)
+        }
+        if (calender2.timeInMillis < System.currentTimeMillis()) {
+            calender2.add(Calendar.DAY_OF_YEAR, 1)
+        }
 
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val thuReq: Long = Calendar.getInstance().timeInMillis + 1

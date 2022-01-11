@@ -3,16 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/ic_baseline_access_alarm_24.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/shapemenu_back.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/switc_thumb.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/switch_track.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/white_back_shape.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/yourbuttonbackground.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm2.xml" value="0.33" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm_create.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm_create.xml" value="0.22" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_history.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_main.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_profile_deatails.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_user.xml" value="0.1921875" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/alarm_item_layout.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/alarm_item_layout.xml" value="0.25" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/alarm_picker_dialogue_layout.xml" value="0.33" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/sample_item_layout.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/drawable/ic_baseline_school_24.xml" value="0.19114583333333332" />

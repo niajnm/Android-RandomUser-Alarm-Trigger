@@ -15,9 +15,7 @@ import com.squareup.picasso.Picasso
 class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
 
     private var userList = mutableListOf<Result>()
-
     val ctx = context as UserActivity
-
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var viewTitle: TextView
@@ -33,7 +31,6 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
 
             imageViewLogo = itemView.findViewById(R.id.sampleImg_id)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

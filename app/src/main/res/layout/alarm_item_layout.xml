@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:padding="5dp">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:padding="5dp"
         android:orientation="horizontal"
+        android:padding="5dp"
         android:weightSum="5">
 
         <ImageView
@@ -17,14 +20,14 @@
             android:layout_width="0dp"
             android:layout_height="75dp"
             android:layout_gravity="start"
-            android:src="@drawable/ic_baseline_access_time_24"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:src="@drawable/medicine2" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_weight="3.5"
             android:orientation="vertical"
             android:weightSum="3">
 
@@ -34,9 +37,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="left|center"
-                android:text="Type"
                 android:padding="2dp"
-                android:singleLine="true"/>
+                android:singleLine="true"
+                android:text="Time" />
 
             <TextView
                 android:id="@+id/MedicineTextView_id"
@@ -44,23 +47,54 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="left|center"
-                android:textColor="@color/mycustom"
-                android:text="Type"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:padding="2dp"
-                android:textStyle="bold"
-                android:textSize="15dp" />
+                android:scrollHorizontally="true"
+                android:text="medicine"
+                android:textColor="@color/mycustom"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/StatusTextView_id"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:ellipsize="marquee"
                 android:gravity="left|center"
+                android:marqueeRepeatLimit="@android:integer/config_longAnimTime"
+                android:scrollHorizontally="true"
                 android:singleLine="true"
-                android:text="price"
-                android:padding="2dp"
-                />
+                android:text="days" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.5"
+           android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp"
+            >
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:rotation="-90"
+                android:checked="true"
+                android:thumbTint="@color/switc_thumb"
+                android:trackTint="@color/switch_track" />
+
+            <ImageView
+                android:id="@+id/delete_button_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_delete_forever_24" />
         </LinearLayout>
 
     </LinearLayout>
