@@ -33,6 +33,7 @@ class ProfileDeatailsActivity : AppCompatActivity() {
         textView_mail_id.text = mail
         TextView_location_id.text = locationCountry
         textVeiw_phone_id.text = phone
+        textViewAge_id.text = age
         Picasso.get().load(img1).into(circleImg_id)
 
         if (gender == "male") {
@@ -40,7 +41,6 @@ class ProfileDeatailsActivity : AppCompatActivity() {
 
         } else {
             Gender_img_id.setImageResource(R.drawable.female)
-
         }
         profile_backbutton_id.setOnClickListener{
 

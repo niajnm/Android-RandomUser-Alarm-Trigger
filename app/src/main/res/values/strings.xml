@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Random user</string>
+    <string name="app_name">Med assistant</string>
 
     <string-array name="medicine_name">
         <item>A B1</item>
@@ -22,6 +22,9 @@
         <item> filmet</item>
         <item> flazil</item>
         <item> histacin </item>
+        <item> lacrin </item>
+        <item>kamoxy</item>
+        <item>Surgel</item>
 
     </string-array>
 </resources>

@@ -32,7 +32,6 @@ class UserActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         databaseHelper = DatabaseHelper(this)
         val sqLiteDatabase = databaseHelper!!.writableDatabase
-
         getapi()
 
         customAdapter = CustomAdapter(this)
@@ -91,7 +90,6 @@ class UserActivity : AppCompatActivity() {
                 userMail,
                 userImgData
             )
-
         } else {
 
             if (databaseListDsc.isNotEmpty()) {
@@ -142,7 +140,6 @@ class UserActivity : AppCompatActivity() {
             }
         }
 
-
         val intent = Intent(this, ProfileDeatailsActivity::class.java)
         intent.putExtra("dataName", userName)
         intent.putExtra("dataGender", userGender)
@@ -152,6 +149,5 @@ class UserActivity : AppCompatActivity() {
         intent.putExtra("dataPhone", userphone)
         intent.putExtra("dataAge", userAge)
         startActivity(intent)
-
     }
 }

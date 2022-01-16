@@ -5,11 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:icon="@drawable/pngegg23"
+        android:icon="@drawable/medposter"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RandomUser">
+        <activity
+            android:name=".AlarmClock.AlarmDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".AlarmClock.AlarmCreateActivity"
             android:exported="false" />

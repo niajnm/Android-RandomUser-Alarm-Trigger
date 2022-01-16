@@ -18,14 +18,13 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
     val ctx = context as UserActivity
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var viewTitle: TextView
+        var viewTitle: TextView = itemView.findViewById(R.id.textView_title)
         var viewPrice: TextView
         var viewDesc: TextView
 
         var imageViewLogo: ImageView
 
         init {
-            viewTitle = itemView.findViewById(R.id.textView_title)
             viewPrice = itemView.findViewById(R.id.textViewCart_price)
             viewDesc = itemView.findViewById(R.id.textView_desc)
 
@@ -47,7 +46,7 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
         val userMail = userPosition.email
         val userlocation = userPosition.location.country.toString()
         val userphone = userPosition.phone
-        val userAge = userPosition.cell
+        val userAge = userPosition.nat
         val userImage2 = userPosition.picture.medium
         val imgData: String? = userPosition.picture.large
 
@@ -60,11 +59,19 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
         Picasso.get().load(imgData).into(holder.imageViewLogo)
 
 
-        holder.itemView.setOnClickListener({
+        holder.itemView.setOnClickListener {
 
-            ctx.passDetails(firstName,userGender,userMail,imgData,userlocation,userphone,userAge)
+            ctx.passDetails(
+                firstName,
+                userGender,
+                userMail,
+                imgData,
+                userlocation,
+                userphone,
+                userAge
+            )
 
-        })
+        }
 
     }
 

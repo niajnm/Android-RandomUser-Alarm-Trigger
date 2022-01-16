@@ -1,9 +1,11 @@
 package com.example.randomuser
 
 import Database.DatabaseHelper
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.randomuser.AlarmClock.AlarmActivity2
 import com.example.randomuser.AlarmClock.AlarmReceiver
 import kotlinx.android.synthetic.main.activity_main.*
@@ -44,5 +46,24 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+
+
+    override fun onBackPressed() {
+       var builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder!!.setTitle("Exit !")
+        builder!!.setMessage("Do you want to exit ?")
+        builder!!.setIcon(R.drawable.ic_baseline_cancel_24)
+        builder!!.setPositiveButton("Yes", { dialog, which -> finish() })
+        builder!!.setNegativeButton("No") { dialog, which ->
+            Toast.makeText(
+                this,
+                "Back to main menu !",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        builder!!.setNeutralButton("Minimize") { dialog, which -> onBackPressed() }
+        val alertDialog: androidx.appcompat.app.AlertDialog = builder!!.create()
+        alertDialog.show()
     }
 }

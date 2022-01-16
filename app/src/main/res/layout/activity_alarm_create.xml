@@ -19,10 +19,11 @@
             android:background="@color/mycustom"
             android:gravity="center"
             android:orientation="horizontal">
-           <AnalogClock
-               android:layout_gravity="center"
-               android:layout_width="wrap_content"
-               android:layout_height="80dp"/>
+
+            <AnalogClock
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -32,106 +33,257 @@
             android:orientation="vertical"
             android:padding="5dp">
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/white_back_shape"
-                android:singleLine="true"
-                android:text="Medicine Name"
                 android:padding="5dp"
-                android:textColor="@color/white" />
-
-            <AutoCompleteTextView
-
-                android:id="@+id/autoCompleteText_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:hint="Medicine " />
-
-            <AutoCompleteTextView
-
-                android:id="@+id/autoCompleteText2_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Medicine "
-                android:singleLine="true"
-
-                android:visibility="gone" />
-
-            <AutoCompleteTextView
-
-                android:id="@+id/autoCompleteText3_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Medicine "
-                android:singleLine="true"
-
-                android:visibility="gone" />
-
-            <AutoCompleteTextView
-
-                android:id="@+id/autoCompleteText4_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Medicine "
-                android:singleLine="true"
-
-                android:visibility="gone" />
-
-
-            <ImageButton
-
-                android:id="@+id/buttonAdd_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_add_24" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/white_back_shape"
                 android:text="Select Time"
-                android:padding="5dp"
 
                 android:textColor="@color/white" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
-                <TextView
-                    android:id="@+id/textTime_id"
+                <LinearLayout
+                    android:id="@+id/lineLayout1_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="8:00 AM"
-                    android:textSize="20sp" />
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textTime2_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="8:00 AM"
-                    android:textSize="20sp"
-                    android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/textTime_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
 
-                <TextView
-                    android:id="@+id/textTime3_id"
+                        android:hint="8:00 AM"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/white_back_shape"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:text="Medicine Name"
+                        android:textColor="@color/white" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/autoCompleteText_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/autoCompleteText2_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/autoCompleteText3_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/autoCompleteText4_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <ImageButton
+
+                        android:id="@+id/buttonAdd_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lineLayout2_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="8:00 AM"
-                    android:textSize="20sp"
-                    android:visibility="gone" />
+                    android:layout_margin="3dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textTime2_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:hint="8:00 AM"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/white_back_shape"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:text="Medicine Name"
+                        android:textColor="@color/white" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/lyout2autoText1_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/lyout2autoText2_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/lyout2autoText3_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/lyout2autoText4_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <ImageButton
+
+                        android:id="@+id/lay2buttonAdd2_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lineLayout3_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="3dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textTime3_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:hint="8:00 AM"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/white_back_shape"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:text="Medicine Name"
+                        android:textColor="@color/white" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/lyout3autoText1_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/lyout3autoText2_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/lyout3autoText3_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <AutoCompleteTextView
+
+                        android:id="@+id/lyout3autoText4_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine "
+                        android:singleLine="true"
+
+                        android:visibility="gone" />
+
+                    <ImageButton
+
+                        android:id="@+id/lay3buttonAdd3_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
 
             </LinearLayout>
 
@@ -140,8 +292,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/white_back_shape"
-                android:text="Schedule"
                 android:padding="5dp"
+                android:text="Schedule"
 
                 android:textColor="@color/white" />
 
@@ -193,8 +345,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/white_back_shape"
-                android:text="Schedule"
                 android:padding="5dp"
+                android:text="Schedule"
 
                 android:textColor="@color/white" />
 

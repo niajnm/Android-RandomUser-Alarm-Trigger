@@ -51,6 +51,8 @@
                 android:padding="2dp"
                 android:scrollHorizontally="true"
                 android:text="medicine"
+                android:singleLine="true"
+                android:scrollIndicators="start"
                 android:textColor="@color/mycustom"
                 android:textSize="15dp"
                 android:textStyle="bold" />
@@ -76,14 +78,14 @@
             android:layout_weight="0.5"
            android:layout_gravity="center"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="2dp"
             >
 
             <Switch
                 android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="6dp"
                 android:rotation="-90"
                 android:checked="true"
                 android:thumbTint="@color/switc_thumb"
@@ -93,7 +95,7 @@
                 android:id="@+id/delete_button_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_baseline_delete_forever_24" />
         </LinearLayout>
 

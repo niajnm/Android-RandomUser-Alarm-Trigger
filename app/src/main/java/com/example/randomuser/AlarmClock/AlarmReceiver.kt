@@ -30,6 +30,7 @@ class AlarmReceiver : BroadcastReceiver() {
                 .setDefaults(NotificationCompat.DEFAULT_SOUND)
                 .setDefaults(NotificationCompat.DEFAULT_VIBRATE)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .addAction(R.drawable.ic_baseline_stop_24,"Stop",pendingIntent)
                 .setContentIntent(pendingIntent)
 
             val notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
@@ -39,13 +40,8 @@ class AlarmReceiver : BroadcastReceiver() {
             val notificationManagerCompat = NotificationManagerCompat.from(context)
             notificationManagerCompat.notify(123, builder.build())
 
-
-
         }
 
     }
-
-
-
 
 }

@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.text.Html
 import android.util.Log
@@ -18,13 +17,7 @@ import android.widget.Switch
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.randomuser.R
-import com.example.randomuser.UserActivity
-import com.example.randomuser.model.Result
-import com.squareup.picasso.Picasso
 import java.util.ArrayList
-import android.widget.CompoundButton
-
-
 
 
 class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) : RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
@@ -32,21 +25,13 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) : Recy
     val cntx = context as AlarmActivity2
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var viewTitle: TextView
-        var viewStatus: TextView
-        var viewTime: TextView
-        var imageViewLogo: ImageView
-        var imageViewdelete: ImageView
-        var switch: Switch
+        var viewTitle: TextView = itemView.findViewById(R.id.MedicineTextView_id)
+        var viewStatus: TextView = itemView.findViewById(R.id.StatusTextView_id)
+        var viewTime: TextView = itemView.findViewById(R.id.alarmTextViewT_id)
+        var imageViewLogo: ImageView = itemView.findViewById(R.id.alarmImg_id)
+        var imageViewdelete: ImageView = itemView.findViewById(R.id.delete_button_id)
+        var switch: Switch = itemView.findViewById(R.id.switch1)
 
-        init {
-            viewTitle = itemView.findViewById(R.id.MedicineTextView_id)
-            viewStatus = itemView.findViewById(R.id.StatusTextView_id)
-            viewTime = itemView.findViewById(R.id.alarmTextViewT_id)
-            imageViewLogo = itemView.findViewById(R.id.alarmImg_id)
-            imageViewdelete = itemView.findViewById(R.id.delete_button_id)
-            switch = itemView.findViewById(R.id.switch1)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -56,15 +41,25 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) : Recy
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-            holder.viewTime.text= rdata[position].alarmTime
-            holder.viewTitle.text= rdata[position].medicineName
+
+        val time =rdata[position].alarmTime
+        val time2 =rdata[position].alarmTime2
+        val name =rdata[position].medicineName
+        val name2 =rdata[position].medicineName2
+
+            holder.viewTime.text= "$time $time2"
+            holder.viewTitle.text= "$name $name2"
             holder.viewStatus.text= rdata[position].alarmDays
 
 
 
    holder.itemView.setOnClickListener {
-
-
+       val time =rdata[position].alarmTime
+       val time2 =rdata[position].alarmTime2
+       val name =rdata[position].medicineName
+       val name2 =rdata[position].medicineName2
+       val days =rdata[position].alarmDays
+       cntx.alarmDetails(time,time2,name,name2,days)
 
    }
 
@@ -106,7 +101,12 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) : Recy
         holder.switch.setOnClickListener {
 
             if (holder.switch.isChecked){
+                val key = rdata[position].alarmMagicKey
 
+                if (key != null) {
+                    cntx.onAlarm(key)
+
+                }
             }else{
                 val key = rdata[position].alarmMagicKey
 

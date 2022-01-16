@@ -127,11 +127,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Photos"
+                            android:text="Age"
                             android:textColor="@color/mycustom"
                            android:textSize="15sp" />
 
                         <TextView
+                            android:id="@+id/textViewAge_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="4"
