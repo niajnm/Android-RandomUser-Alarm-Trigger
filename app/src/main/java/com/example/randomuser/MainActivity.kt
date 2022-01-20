@@ -1,10 +1,15 @@
 package com.example.randomuser
 
+import BloodPressure.PressureCalculateActivity
 import Database.DatabaseHelper
+import News.NewsActivity
+import Yoga.PlayerActivity
+import Yoga.YogaMenuActivity
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.CharacterPickerDialog
 import android.widget.Toast
 import com.example.randomuser.AlarmClock.AlarmActivity2
 import com.example.randomuser.AlarmClock.AlarmReceiver
@@ -38,6 +43,25 @@ class MainActivity : AppCompatActivity() {
         cardAlarm_id.setOnClickListener{
             val intent = Intent(this, AlarmActivity2::class.java)
             startActivity(intent)
+        }
+
+        newscard_id.setOnClickListener{
+            val intent = Intent(this, NewsActivity::class.java)
+            startActivity(intent)
+        }
+
+        cardYoga_id.setOnClickListener{
+            val intent = Intent(this, YogaMenuActivity::class.java)
+            startActivity(intent)
+        }
+        cardBlood_id.setOnClickListener{
+            val intent = Intent(this, PressureCalculateActivity::class.java)
+            startActivity(intent)
+        }
+
+        card_test.setOnClickListener {
+
+
         }
 
 

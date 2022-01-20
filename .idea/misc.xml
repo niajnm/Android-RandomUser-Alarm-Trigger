@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/border_strock.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/ic_baseline_access_alarm_24.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/shapemenu_back.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/drawable/switc_thumb.xml" value="0.20833333333333334" />
@@ -13,13 +14,30 @@
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm2.xml" value="0.33" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm_create.xml" value="0.25" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_alarm_details.xml" value="0.25" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_beginner.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_history.xml" value="0.1921875" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_main.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_news.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_player.xml" value="0.22" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_pressure_calculate.xml" value="0.22" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_profile_deatails.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_user.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_web_news.xml" value="0.25" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/activity_yoga_menu.xml" value="0.22" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/alarm_item_layout.xml" value="0.25" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/alarm_picker_dialogue_layout.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/bp_extrimity_layout.xml" value="0.452760736196319" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/bp_position_picker.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/fragment_blank.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/fragment_bp.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/fragment_bp_analysis.xml" value="0.25" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/fragment_bp_history.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/fragment_bp_scale.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/news_item_layout.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/layout/sample_item_layout.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/menu/bottom_menu.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/menu/country_menu.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/Randomuser/app/src/main/res/menu/webmenu_layout.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/drawable/ic_baseline_school_24.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1787037037037037" />
         <entry key="..\:/Users/njmah/Randomuser/app/src/main/res/drawable/shape_round.xml" value="0.19114583333333332" />

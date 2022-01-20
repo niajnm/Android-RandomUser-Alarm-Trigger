@@ -115,7 +115,7 @@
                         />
 
                     <TextView
-                        android:layout_width="50dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:layout_marginVertical="10dp"
@@ -301,6 +301,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBlood_id"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
@@ -321,17 +322,17 @@
                         android:layout_gravity="center"
                         android:background="@drawable/shape_round"
                         android:padding="8dp"
-                        android:src="@drawable/ic_baseline_local_activity_24"
+                        android:src="@drawable/blood_pressuredrop"
 
                         />
 
                     <TextView
-                        android:layout_width="50dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:text="User" />
+                        android:text="Blood Pressure" />
 
 
                 </LinearLayout>
@@ -352,6 +353,7 @@
             android:weightSum="3">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardYoga_id"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
 
@@ -396,6 +398,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
+                android:id="@+id/card_test"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -432,6 +435,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/newscard_id"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
@@ -452,7 +456,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/shape_round"
                         android:padding="8dp"
-                        android:src="@drawable/ic_baseline_local_activity_24"
+                        android:src="@drawable/ic_baseline_newspaper_24"
 
                         />
 
@@ -462,7 +466,7 @@
                         android:layout_gravity="center"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:text="User" />
+                        android:text="World News" />
 
 
                 </LinearLayout>

@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="7dp"
     android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_margin="5dp"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="2dp"
         android:weightSum="5">
 
         <ImageView
             android:id="@+id/alarmImg_id"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="100dp"
             android:layout_gravity="start"
             android:layout_weight="1"
             android:src="@drawable/medicine2" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="3.5"
             android:orientation="vertical"
             android:weightSum="3">
@@ -76,7 +76,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="0.5"
-           android:layout_gravity="center"
+           android:layout_gravity="center|top"
             android:gravity="center"
             android:padding="2dp"
             >
@@ -85,7 +85,7 @@
                 android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="2dp"
                 android:rotation="-90"
                 android:checked="true"
                 android:thumbTint="@color/switc_thumb"
@@ -95,7 +95,7 @@
                 android:id="@+id/delete_button_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:src="@drawable/ic_baseline_delete_forever_24" />
         </LinearLayout>
 

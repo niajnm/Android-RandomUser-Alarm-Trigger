@@ -5,11 +5,29 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:icon="@drawable/medposter"
+        android:icon="@drawable/appicon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RandomUser">
+        <activity
+            android:name="Yoga.BeginnerActivity"
+            android:exported="false" />
+        <activity
+            android:name="BloodPressure.PressureCalculateActivity"
+            android:exported="false" />
+        <activity
+            android:name="Yoga.YogaMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="Yoga.PlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name="News.WebNewsActivity"
+            android:exported="false" />
+        <activity
+            android:name="News.NewsActivity"
+            android:exported="false" />
         <activity
             android:name=".AlarmClock.AlarmDetailsActivity"
             android:exported="false" />

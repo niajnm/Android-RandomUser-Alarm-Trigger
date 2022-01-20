@@ -45,7 +45,7 @@ class UserActivity : AppCompatActivity() {
         })
     }
 
-    fun getapi() {
+    private fun getapi() {
         val reqcall = ATservice().getRandomUser()
         reqcall.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {

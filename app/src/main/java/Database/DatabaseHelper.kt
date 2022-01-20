@@ -17,6 +17,7 @@ class DatabaseHelper(var context: Context) :
         private const val ALARM_TABLE_NAME = "Alarm_history"
         private const val MULTI_ALARM_TABLE_NAME = "Multiple_Alarm"
         private const val SINGLE_ALARM_TABLE_NAME = "Single_Alarm"
+        private const val BLOODP_HISTORY_TABLE_NAME = "bp_history"
 
         private const val COUNTRY = "Country"
         private const val AGE = "Age"
@@ -40,6 +41,13 @@ class DatabaseHelper(var context: Context) :
         private const val Time = "alarm_time"
         private const val Time2 = "alarm_time2"
 
+
+        private const val PNAME = "Patient_name"
+        private const val BPDATE = "date"
+        private const val BPTIME = "time"
+        private const val BP = "Sys_Dias"
+        private const val PULSE = "pulse"
+
         private const val DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME
         private const val VERSION_NUM = 1
         private const val CREATE_TABLE =
@@ -53,6 +61,9 @@ class DatabaseHelper(var context: Context) :
         private const val MULTI_ALARM_TABLE =
             "CREATE TABLE $MULTI_ALARM_TABLE_NAME($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$TITLE VARCHAR(50),$Time VARCHAR(20),$CTIME INT(500),$CTIME2 INT(500),$REQC INT(200),$REQC2 INT(200),$FLAG VARCHAR(50), $WEEKDAYS VARCHAR(500),$Fkey Int(200))"
 
+        private const val BLOOD_TABLE =
+            "CREATE TABLE $BLOODP_HISTORY_TABLE_NAME ($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$PNAME VARCHAR(50),$BPDATE VARCHAR(20),$BPTIME VARCHAR(20),$BP VARCHAR(10),$PULSE VARCHAR(5))"
+
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -61,6 +72,7 @@ class DatabaseHelper(var context: Context) :
             db?.execSQL(ALARM_TABLE)
             db?.execSQL(SINGLE_ALARM_TABLE)
             db?.execSQL(MULTI_ALARM_TABLE)
+            db?.execSQL(BLOOD_TABLE)
 
             Toast.makeText(context, "oncreate", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
