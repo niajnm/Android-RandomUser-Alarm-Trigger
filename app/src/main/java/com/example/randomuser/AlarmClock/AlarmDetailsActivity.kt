@@ -11,14 +11,12 @@ class AlarmDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm_details)
 
-
         val intent = intent
            var rcvTime =  intent.getStringExtra("alarmTime")
            var rcvTime2 =  intent.getStringExtra("alarmTime2")
            var rcvMedicineName =  intent.getStringExtra("alarmName")
            var rcvMedicineName2 =  intent.getStringExtra("alarmName2")
            var rcvDays =  intent.getStringExtra("alarmDays")
-
 
         timeView_id.text= rcvTime
         timeView2_id.text= rcvTime2

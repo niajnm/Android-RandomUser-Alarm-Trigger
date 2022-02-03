@@ -113,8 +113,6 @@ class AlarmActivity2 : AppCompatActivity() {
 //                        pendingIntent
 //                    )
 //                    Log.d("newtime", "onAlarm $newtime")
-//
-//
 //                } else {
 //                    while (newtime < currentTime) {
 //
@@ -163,15 +161,11 @@ class AlarmActivity2 : AppCompatActivity() {
         val cursor = databaseHelper.loadAlarmDataOn(magicKey)
         val rCodeList = databaseHelper.OnAlarmData(cursor)
 
-
         if (rCodeList.size == 1) {
             singleAlarmOn(rCodeList)
-
         } else {
             multiAlarmOn(rCodeList)
-
         }
-
     }
 
     private fun singleAlarmOn(rCodeList: ArrayList<DataModel>) {
@@ -214,13 +208,11 @@ class AlarmActivity2 : AppCompatActivity() {
                     }
                     databaseHelper!!.alarmUpdate(cTime, newtime)
 
-
                     while (newtime2 < currentTime) {
 
                         newtime2 += 86400000
                         Log.d("Onetime", "updatetime $newtime2")
                     }
-
                     databaseHelper!!.alarmUpdateTwice(cTime2, newtime2)
 
                     alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -245,7 +237,6 @@ class AlarmActivity2 : AppCompatActivity() {
             }
         }
         Toast.makeText(context, "Alarm on", Toast.LENGTH_SHORT).show()
-
     }
 
     private fun multiAlarmOn(rCodeList: ArrayList<DataModel>) {
@@ -265,7 +256,6 @@ class AlarmActivity2 : AppCompatActivity() {
                 Log.d("newtime", "getfrom $newtime")
                 if (reqReqCode2 == 0) {
                     while (newtime < currentTime) {
-
                         newtime += 86400000 * 7
                         Log.d("newtime", "updatetime $newtime")
                     }
@@ -281,8 +271,6 @@ class AlarmActivity2 : AppCompatActivity() {
                         pendingIntent
                     )
                     Log.d("newtime", "onAlarm $newtime")
-
-
                 } else {
                     while (newtime < currentTime) {
 
@@ -291,15 +279,12 @@ class AlarmActivity2 : AppCompatActivity() {
                     }
                     databaseHelper!!.alarmUpdate(cTime, newtime)
 
-
                     while (newtime2 < currentTime) {
-
                         newtime2 += 86400000 * 7
                         Log.d("Onetime", "updatetime $newtime2")
                     }
 
                     databaseHelper!!.alarmUpdateTwice(cTime2, newtime2)
-
                     alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
                     val intent = Intent(context, AlarmReceiver::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_MULTIPLE_TASK
@@ -317,14 +302,11 @@ class AlarmActivity2 : AppCompatActivity() {
                         pi
                     )
                     Log.d("Twotime", "onAlarm $newtime")
-
                 }
-
             }
         }
         Toast.makeText(context, "Alarm on", Toast.LENGTH_SHORT).show()
     }
-
 
     private fun cencelAlarm(Dkey: Int) {
         val intent = Intent(this, AlarmReceiver::class.java)
@@ -337,7 +319,6 @@ class AlarmActivity2 : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         alarmDisplay()
-
     }
 
     fun alarmDetails(time: String?, time2: String?, name: String?, name2: String?, days: String?) {
@@ -348,6 +329,5 @@ class AlarmActivity2 : AppCompatActivity() {
         intent.putExtra("alarmName2", name2)
         intent.putExtra("alarmDays", days)
         startActivity(intent)
-
     }
 }

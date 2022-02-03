@@ -6,7 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
-import java.util.ArrayList
+import java.util.*
 
 class DatabaseHelper(var context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, VERSION_NUM) {
@@ -45,8 +45,16 @@ class DatabaseHelper(var context: Context) :
         private const val PNAME = "Patient_name"
         private const val BPDATE = "date"
         private const val BPTIME = "time"
-        private const val BP = "Sys_Dias"
+        private const val CALMILISEC = "cal_milisec"
+        private const val SYS = "Systolic"
+        private const val DIAS = "Diastolic"
         private const val PULSE = "pulse"
+        private const val RESULT = "result"
+        private const val MAP = "map"
+        private const val COLORCODE = "color_cd"
+        private const val CHARTVAL = "chart_val"
+        private const val POSITION = "position"
+        private const val EXTRMITY = "extrimity"
 
         private const val DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME
         private const val VERSION_NUM = 1
@@ -62,7 +70,7 @@ class DatabaseHelper(var context: Context) :
             "CREATE TABLE $MULTI_ALARM_TABLE_NAME($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$TITLE VARCHAR(50),$Time VARCHAR(20),$CTIME INT(500),$CTIME2 INT(500),$REQC INT(200),$REQC2 INT(200),$FLAG VARCHAR(50), $WEEKDAYS VARCHAR(500),$Fkey Int(200))"
 
         private const val BLOOD_TABLE =
-            "CREATE TABLE $BLOODP_HISTORY_TABLE_NAME ($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$PNAME VARCHAR(50),$BPDATE VARCHAR(20),$BPTIME VARCHAR(20),$BP VARCHAR(10),$PULSE VARCHAR(5))"
+            "CREATE TABLE $BLOODP_HISTORY_TABLE_NAME ($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$PNAME VARCHAR(50),$BPDATE DATE(20),$BPTIME VARCHAR(20),$SYS VARCHAR(10),$DIAS VARCHAR(10),$PULSE INT,$RESULT VARCHAR(20),$MAP INT,$COLORCODE INT,$CHARTVAL INT,$POSITION VARCHAR(20),$EXTRMITY VARCHAR(20),$CALMILISEC INT(500))"
 
     }
 
@@ -89,6 +97,29 @@ class DatabaseHelper(var context: Context) :
         return sqLiteDatabase.rawQuery("SELECT * FROM $TABLE_NAME ORDER BY id_ DESC", null)
     }
 
+    fun DisplayBPData(): Cursor {
+        val sqLiteDatabase = this.writableDatabase
+        return sqLiteDatabase.rawQuery(
+            "SELECT * FROM $BLOODP_HISTORY_TABLE_NAME ORDER BY id_ DESC",
+            null
+        )
+    }
+
+    fun DisplayChartData(chartKey: Int): Cursor {
+        val sqLiteDatabase = this.writableDatabase
+        return sqLiteDatabase.rawQuery(
+            "SELECT * FROM $BLOODP_HISTORY_TABLE_NAME where color_cd =$chartKey ",
+            null
+        )
+    }
+
+    fun searchChartData(dateKey1: Long, dateKey2: Long): Cursor {
+        val sqLiteDatabase = this.writableDatabase
+        //  return sqLiteDatabase.rawQuery("SELECT * FROM $BLOODP_HISTORY_TABLE_NAME where date BETWEEN strftime('%y-%m-%d', '$dateKey1') AND strftime('%y-%m-%d', '$dateKey2')", null)
+        return sqLiteDatabase.rawQuery("SELECT * FROM $BLOODP_HISTORY_TABLE_NAME where $CALMILISEC BETWEEN $dateKey1 AND $dateKey2",null)
+    }
+
+
     fun displayAlarmData(): Cursor {
         val sqLiteDatabase = this.writableDatabase
         return sqLiteDatabase.rawQuery("SELECT * FROM $ALARM_TABLE_NAME", null)
@@ -97,6 +128,16 @@ class DatabaseHelper(var context: Context) :
     fun loadDataASC(): Cursor {
         val sqLiteDatabase = this.writableDatabase
         return sqLiteDatabase.rawQuery("SELECT * FROM $TABLE_NAME ORDER BY id_ ASC LIMIT 1", null)
+    }
+
+    fun searchAnalysis(d1: Long): Cursor {
+
+        val sqLiteDatabase = this.writableDatabase
+        return sqLiteDatabase.rawQuery(
+            "SELECT * FROM $BLOODP_HISTORY_TABLE_NAME ORDER BY id_ ASC LIMIT $d1",
+            null
+        )
+
     }
 
     fun loadAlarmDatadDelete(magicKey: Int): Cursor {
@@ -115,13 +156,14 @@ class DatabaseHelper(var context: Context) :
         )
     }
 
-    fun loadAlarmDatakey(magicKey: Int): Cursor {
-        val sqLiteDatabase = this.writableDatabase
-        return sqLiteDatabase.rawQuery(
-            "SELECT * FROM $MULTI_ALARM_TABLE_NAME WHERE frn_key= $magicKey",
-            null
-        )
-    }
+//
+//    fun DisplayChartData(magicKey: Int): Cursor {
+//        val sqLiteDatabase = this.writableDatabase
+//        return sqLiteDatabase.rawQuery(
+//            "BLOODP_HISTORY$BLOODP_HISTORY_TABLE_NAME WHERE color_cd= $magicKey",
+//            null
+//        )
+//    }
 
     fun dataDelete(numId: String?) {
         val db: SQLiteDatabase = getWritableDatabase()
@@ -139,11 +181,14 @@ class DatabaseHelper(var context: Context) :
     }
 
     fun deleteAlarmData(numId: Int) {
-        val db: SQLiteDatabase = getWritableDatabase()
+        val db: SQLiteDatabase = writableDatabase
         db.execSQL("DELETE FROM $ALARM_TABLE_NAME WHERE frn_Key=$numId")
         db.execSQL("DELETE FROM $MULTI_ALARM_TABLE_NAME WHERE frn_Key=$numId")
     }
-
+    fun deleteBpData(id: Int) {
+        val db: SQLiteDatabase = writableDatabase
+        db.execSQL("DELETE FROM $BLOODP_HISTORY_TABLE_NAME WHERE id_=$id")
+    }
 
     fun insertCartData(
         name: String?,
@@ -164,6 +209,40 @@ class DatabaseHelper(var context: Context) :
         contentValues.put(MAIL, userMail)
         contentValues.put(IMG, userImgData)
         sqLiteDatabase.insert(TABLE_NAME, null, contentValues)
+    }
+
+    fun bpInsertData(
+        name: String?,
+        date: String,
+        time: String?,
+        sys: String,
+        dias: String,
+        pulse: Int,
+        result: String?,
+        map: Int?,
+        color: Int?,
+        chart: Int?,
+        position: String?,
+        extrimity: String?,
+        cal_milisec: Long
+    ) {
+        val sqLiteDatabase = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(PNAME, name)
+        contentValues.put(BPDATE, date)
+        contentValues.put(BPTIME, time)
+        contentValues.put(SYS, sys)
+        contentValues.put(DIAS, dias)
+        contentValues.put(PULSE, pulse)
+        contentValues.put(RESULT, result)
+        contentValues.put(MAP, map)
+        contentValues.put(COLORCODE, color)
+        contentValues.put(CHARTVAL, chart)
+        contentValues.put(POSITION, position)
+        contentValues.put(EXTRMITY, extrimity)
+        contentValues.put(CALMILISEC, cal_milisec)
+
+        sqLiteDatabase.insert(BLOODP_HISTORY_TABLE_NAME, null, contentValues)
     }
 
     fun loadData(cursor: Cursor): ArrayList<DataModel> {
@@ -294,4 +373,63 @@ class DatabaseHelper(var context: Context) :
         }
         return dataList
     }
+
+    fun searchChartDataload(cursor: Cursor): ArrayList<DataModel> {
+
+        val dataList: ArrayList<DataModel> = ArrayList<DataModel>()
+        if (cursor.count == 0) {
+
+        } else {
+            while (cursor.moveToNext()) {
+                val bpData = DataModel()
+                bpData.bpId = cursor.getInt(0)
+                bpData.bpName = cursor.getString(1)
+                bpData.bpDate = cursor.getString(2)
+                bpData.bpTime = cursor.getString(3)
+                bpData.bpSys = cursor.getString(4)
+                bpData.bpDias = cursor.getString(5)
+                bpData.bpPulse = cursor.getInt(6)
+                bpData.bpResult = cursor.getString(7)
+                bpData.bpMap = cursor.getInt(8)
+                bpData.bpColor = cursor.getInt(9)
+                bpData.bpChart = cursor.getInt(10)
+                bpData.bpPosition = cursor.getString(11)
+                bpData.bpExtrimity = cursor.getString(12)
+                dataList.add(bpData)
+            }
+        }
+        return dataList
+    }
+
+    fun loadBpData(cursor: Cursor): ArrayList<DataModel> {
+
+        val dataList: ArrayList<DataModel> = ArrayList<DataModel>()
+        if (cursor.count == 0) {
+
+        } else {
+            while (cursor.moveToNext()) {
+                val bpData = DataModel()
+                bpData.bpId = cursor.getInt(0)
+                bpData.bpName = cursor.getString(1)
+                bpData.bpDate = cursor.getString(2)
+                bpData.bpTime = cursor.getString(3)
+                bpData.bpSys = cursor.getString(4)
+                bpData.bpDias = cursor.getString(5)
+                bpData.bpPulse = cursor.getInt(6)
+                bpData.bpResult = cursor.getString(7)
+                bpData.bpMap = cursor.getInt(8)
+                bpData.bpColor = cursor.getInt(9)
+                bpData.bpChart = cursor.getInt(10)
+                bpData.bpPosition = cursor.getString(11)
+                bpData.bpExtrimity = cursor.getString(12)
+                dataList.add(bpData)
+            }
+        }
+        return dataList
+
+    }
+
+
+
+
 }

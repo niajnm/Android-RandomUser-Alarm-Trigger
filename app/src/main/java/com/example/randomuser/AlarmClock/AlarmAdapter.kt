@@ -51,12 +51,9 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) :
         val time2 = rdata[position].alarmTime2
         val name = rdata[position].medicineName
         val name2 = rdata[position].medicineName2
-
         holder.viewTime.text = "$time $time2"
         holder.viewTitle.text = "$name $name2"
         holder.viewStatus.text = rdata[position].alarmDays
-
-
 
         holder.itemView.setOnClickListener {
             val time = rdata[position].alarmTime
@@ -65,9 +62,7 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) :
             val name2 = rdata[position].medicineName2
             val days = rdata[position].alarmDays
             cntx.alarmDetails(time, time2, name, name2, days)
-
         }
-
 
         holder.imageViewdelete.setOnClickListener {
             val builder1 = AlertDialog.Builder(context)
@@ -85,12 +80,11 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) :
                         cntx.deleteAlarm(key)
                         notifyItemRemoved(position)
                     }
-
                 })
 
             builder1.setNegativeButton(
-                "No",
-                DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+                "No"
+            ) { dialog, id -> dialog.cancel() }
 
             val alert11: AlertDialog = builder1.create()
             alert11.show()
@@ -113,7 +107,6 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) :
                 editor.apply()
 
                     cntx.onAlarm(key)
-
             } else {
                 val key = rdata[position].alarmMagicKey!!
                 editor.putBoolean("$key", false)

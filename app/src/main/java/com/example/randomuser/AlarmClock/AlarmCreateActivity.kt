@@ -270,11 +270,8 @@ class AlarmCreateActivity : AppCompatActivity() {
                     editor.putBoolean("fri", false)
                     editor.apply()
                 }
-
                 flagCheckbox++
-
                 btn_customDay.text = "Specific days :" + stringBuffer.toString()
-
                 alert11.dismiss()
             }
         }
@@ -342,8 +339,6 @@ class AlarmCreateActivity : AppCompatActivity() {
                     val intent = Intent(this, AlarmActivity2::class.java)
                     startActivity(intent)
                 }
-
-
             } else if (flag == 2 && flag2 == 0) {
 
                 var edit1 = textTime_id.text.toString()
@@ -405,12 +400,8 @@ class AlarmCreateActivity : AppCompatActivity() {
                     val intent = Intent(this, AlarmActivity2::class.java)
                     startActivity(intent)
                 }
-
-
             } else {
             }
-
-
         }
 
         btn1.setOnClickListener {
@@ -470,7 +461,7 @@ class AlarmCreateActivity : AppCompatActivity() {
                     textTime_id.setText(readableTime)
                 }
                 calender = Calendar.getInstance()
-                calender.set(Calendar.HOUR_OF_DAY, i)
+                calender.set(Calendar.HOUR_OF_DAY,i)
                 calender.set(Calendar.MINUTE, i1)
                 calender.set(Calendar.SECOND, 0)
                 calender.set(Calendar.MILLISECOND, 0)
@@ -481,8 +472,6 @@ class AlarmCreateActivity : AppCompatActivity() {
         _timePickerDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         _timePickerDialog.setTitle("Select a Time")
         _timePickerDialog.show()
-
-
     }
 
     private fun showTimePicker2() {
@@ -559,7 +548,6 @@ class AlarmCreateActivity : AppCompatActivity() {
 //    }
 //  }
 
-
     private fun setAlarm1() {
 
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -606,22 +594,17 @@ class AlarmCreateActivity : AppCompatActivity() {
             autogenerateKey
         )
         Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
-
     }
 
     private fun setAlarm2() {
 
         val totReadabletime = "$readableTime $readableTime_2"
-
-
-
         if (calender.timeInMillis < System.currentTimeMillis()) {
             calender.add(Calendar.DAY_OF_YEAR, 1)
         }
         if (calender2.timeInMillis < System.currentTimeMillis()) {
             calender2.add(Calendar.DAY_OF_YEAR, 1)
         }
-
         val alarmTimeMilsec = calender.timeInMillis
         val alarmTimeMilsec2 = calender2.timeInMillis
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager

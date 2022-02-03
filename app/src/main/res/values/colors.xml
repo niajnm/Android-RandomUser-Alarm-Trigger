@@ -14,6 +14,7 @@
     <color name="colorPrimary">#024265</color>
     <color name="colorPrimaryDark">#024265</color>
     <color name="colorAccent">#05af9b</color>
+    <color name="colorgrey">#EDE6F3</color>
 
     <color name="color_one">#fb7268</color>
     <color name="color_white">#ededf2</color>
@@ -23,4 +24,10 @@
     <color name="Python">#66BB6A</color>
     <color name="CPP">#EF5350</color>
     <color name="Java">#29B6F6</color>
+    <color name="low">#00BCD4</color>
+    <color name="normal">#4CAF50</color>
+    <color name="elevate">#FF9800</color>
+    <color name="hyper1">#FF5722</color>
+    <color name="hyper2">#EA2C1E</color>
+    <color name="hyper3">#830202</color>
 </resources>
