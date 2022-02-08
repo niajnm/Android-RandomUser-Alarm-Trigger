@@ -21,6 +21,7 @@ class AlarmActivity2 : AppCompatActivity() {
     lateinit var pendingIntent: PendingIntent
     lateinit var alarmAdapter: AlarmAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm2)

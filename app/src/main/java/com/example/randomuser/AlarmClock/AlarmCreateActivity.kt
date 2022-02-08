@@ -41,7 +41,6 @@ class AlarmCreateActivity : AppCompatActivity() {
     val mgicKey: Long = Calendar.getInstance().timeInMillis + 10
     var autogenerateKey = mgicKey.toInt()
 
-
     var medicine1 = ""
     var medicine2 = ""
     var medicine3 = ""

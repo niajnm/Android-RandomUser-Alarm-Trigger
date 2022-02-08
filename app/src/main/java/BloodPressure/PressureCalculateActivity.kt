@@ -1,6 +1,7 @@
 package BloodPressure
 
 
+import BloodPressure.fragment.BlankFragment
 import BloodPressure.fragment.BpAnalysisFragment
 import BloodPressure.fragment.BpFragment
 import BloodPressure.fragment.bpHistoryFragment
@@ -34,6 +35,11 @@ class PressureCalculateActivity : AppCompatActivity() {
 
                 R.id.menuAnalysis_id -> {
                     val bpfragment = BpAnalysisFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, bpfragment).commit()
+                }
+                R.id.menuLineChart_id -> {
+                    val bpfragment = BlankFragment()
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, bpfragment).commit()
                 }
