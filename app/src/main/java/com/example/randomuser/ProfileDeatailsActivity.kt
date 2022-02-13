@@ -18,7 +18,6 @@ class ProfileDeatailsActivity : AppCompatActivity() {
         )
         setContentView(R.layout.activity_profile_deatails)
 
-
         val intent = intent
         var name = intent.getStringExtra("dataName")
         var gender = intent.getStringExtra("dataGender")
@@ -27,7 +26,6 @@ class ProfileDeatailsActivity : AppCompatActivity() {
         var locationCountry = intent.getStringExtra("datalocation")
         var phone = intent.getStringExtra("dataPhone")
         var age = intent.getStringExtra("dataAge")
-
 
         profileName_id.text = name
         textView_mail_id.text = mail

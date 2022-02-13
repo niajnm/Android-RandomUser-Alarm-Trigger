@@ -91,21 +91,17 @@ class AlarmCreateActivity : AppCompatActivity() {
         lyout2autoText4_id.threshold = 1
         lyout2autoText4_id.setAdapter(medicine)
 
-
         buttonAdd_id.setOnClickListener {
             medflag++
 
             if (medflag == 1) {
                 autoCompleteText2_id.isVisible = true
-
             }
             if (medflag == 2) {
                 autoCompleteText3_id.isVisible = true
-
             }
             if (medflag == 3) {
                 autoCompleteText4_id.isVisible = true
-
             }
         }
 
@@ -115,15 +111,12 @@ class AlarmCreateActivity : AppCompatActivity() {
 
             if (medflag2 == 1) {
                 lyout2autoText2_id.isVisible = true
-
             }
             if (medflag2 == 2) {
                 lyout2autoText3_id.isVisible = true
-
             }
             if (medflag2 == 3) {
                 lyout2autoText4_id.isVisible = true
-
             }
         }
 
@@ -132,15 +125,12 @@ class AlarmCreateActivity : AppCompatActivity() {
 
             if (medflag3 == 1) {
                 lyout2autoText2_id.isVisible = true
-
             }
             if (medflag3 == 2) {
                 lyout3autoText3_id.isVisible = true
-
             }
             if (medflag3 == 3) {
                 lyout3autoText4_id.isVisible = true
-
             }
         }
 
@@ -149,7 +139,6 @@ class AlarmCreateActivity : AppCompatActivity() {
         createNotificationChannel()
 
         textTime_id.setOnClickListener {
-
             showTimePicker1()
         }
 
@@ -214,7 +203,6 @@ class AlarmCreateActivity : AppCompatActivity() {
                     editor.putBoolean("sun", true)
                     editor.apply()
                     stringBuffer.append("Sunday ")
-
                 } else {
                     editor.putBoolean("sun", false)
                     editor.apply()
@@ -460,7 +448,7 @@ class AlarmCreateActivity : AppCompatActivity() {
                     textTime_id.setText(readableTime)
                 }
                 calender = Calendar.getInstance()
-                calender.set(Calendar.HOUR_OF_DAY,i)
+                calender.set(Calendar.HOUR_OF_DAY, i)
                 calender.set(Calendar.MINUTE, i1)
                 calender.set(Calendar.SECOND, 0)
                 calender.set(Calendar.MILLISECOND, 0)

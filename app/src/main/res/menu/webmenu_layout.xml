@@ -9,5 +9,5 @@
     <item
         android:id="@+id/menuReport_id"
         android:title="Setting"
-        app:showAsAction="never" />
+       />
 </menu>
