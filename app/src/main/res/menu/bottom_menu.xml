@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menuScale_id"
+        android:title="BP Scale"
+        app:showAsAction="always"
+
+        android:icon="@drawable/blood_pressuredrop" />
+
+    <item android:id="@+id/menuBloodHistory_id"
+        android:title="History"
+        app:showAsAction="always"
+
+        android:icon="@drawable/ic_baseline_history_24" />
+
+    <item android:id="@+id/menuAnalysis_id"
+        android:title="Analysis"
+        app:showAsAction="always"
+        android:icon="@drawable/bloodpressure" />
+    <item android:id="@+id/menuLineChart_id"
+        android:title="Chart"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_graphic_eq_24" />
+</menu>

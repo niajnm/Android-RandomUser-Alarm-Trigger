@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Extrimity"/>
+    <RadioGroup
+        android:id="@+id/rdogrp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:weightSum="3">
+
+        <RadioButton
+            android:id="@+id/radioBtn_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Seated"
+            app:buttonTint="@color/mycustom" />
+
+        <RadioButton
+            android:id="@+id/radioBtn_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:text="Lying"
+            app:buttonTint="@color/mycustom" />
+
+        <RadioButton
+            android:id="@+id/radioBtn_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:text="Semi-Recubment"
+            app:buttonTint="@color/mycustom" />
+
+        <RadioButton
+            android:id="@+id/radioBtn_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:text="Standing"
+            app:buttonTint="@color/mycustom" />
+
+    </RadioGroup>
+
+    <androidx.constraintlayout.utils.widget.MotionButton
+        android:id="@+id/ex_confirmBtn_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        />
+</LinearLayout>

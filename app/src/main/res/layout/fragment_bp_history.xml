@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="BloodPressure.fragment.bpHistoryFragment">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:id="@+id/bpScaleTool_id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:weightSum="3"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/historyDate1_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="12sp"
+            app:chipIconSize="20dp"
+            android:text="Date"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:chipBackgroundColor="#39b8db"
+            app:chipIcon="@drawable/ic_baseline_calendar_month_24"
+            app:iconStartPadding="5dp"  />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To"
+            android:gravity="center"
+            android:layout_weight="0.1"
+            />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/historyDate2_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="12sp"
+            app:chipIconSize="20dp"
+            android:text="Date"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:chipBackgroundColor="#39b8db"
+            app:chipIcon="@drawable/ic_baseline_calendar_month_24"
+            app:iconStartPadding="5dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:backgroundTint="#39b8db"
+            android:text="ok"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:id="@+id/history_ok_button"
+
+            />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bpRecycer_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:padding="5dp" />
+</LinearLayout>

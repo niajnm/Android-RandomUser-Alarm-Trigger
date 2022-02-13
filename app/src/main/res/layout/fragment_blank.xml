@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="BloodPressure.fragment.BlankFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp">
+
+        <LinearLayout
+            android:id="@+id/bpScaleTool_id"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/srchDate1_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1.1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Date"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:chipBackgroundColor="#39b8db"
+                app:chipIcon="@drawable/ic_baseline_calendar_month_24"
+                app:chipIconSize="20dp"
+                app:iconStartPadding="5dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:text="To" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/srchDate2_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1.1"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="Date"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:chipBackgroundColor="#39b8db"
+                app:chipIcon="@drawable/ic_baseline_calendar_month_24"
+                app:chipIconSize="20dp"
+                app:iconStartPadding="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/analysis_ok_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="#39b8db"
+                android:text="ok"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="40dp"
+        app:cardCornerRadius="5dp">
+
+        <io.github.farshidroohi.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:chart_bg_color="#000000"
+            app:chart_line_color="#32FFFFFF"
+            app:chart_line_size="1dp"
+            app:chart_padding_bottom="40dp"
+            app:chart_padding_left="20dp"
+            app:chart_padding_right="20dp"
+            app:chart_padding_top="20dp"
+
+
+            />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <HorizontalScrollView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content">-->
+
+    <!--            <View-->
+    <!--                android:id="@+id/line_view"-->
+    <!--                class="im.dacer.androidcharts.LineView"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="300dp" />-->
+    <!--        </HorizontalScrollView>-->
+    <!--    </LinearLayout>-->
+
+</LinearLayout>
