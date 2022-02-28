@@ -1,7 +1,10 @@
 package com.example.randomuser
 
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import com.example.randomuser.R
@@ -11,13 +14,14 @@ import kotlinx.android.synthetic.main.activity_profile_deatails.*
 class ProfileDeatailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-        setContentView(R.layout.activity_profile_deatails)
 
+//        requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        getWindow().setFlags(
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN
+//        )
+       setContentView(R.layout.activity_profile_deatails)
+        setStatusBarTransparent()
         val intent = intent
         var name = intent.getStringExtra("dataName")
         var gender = intent.getStringExtra("dataGender")
@@ -40,12 +44,24 @@ class ProfileDeatailsActivity : AppCompatActivity() {
         } else {
             Gender_img_id.setImageResource(R.drawable.female)
         }
-        profile_backbutton_id.setOnClickListener{
-
+        profile_backbutton_id.setOnClickListener {
             onBackPressed()
-
         }
+    }
 
-
+    private fun setStatusBarTransparent() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            val decorView: View = window.getDecorView()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                decorView.systemUiVisibility =
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            } else {
+                decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            }
+            window.setStatusBarColor(Color.TRANSPARENT)
+        }
     }
 }

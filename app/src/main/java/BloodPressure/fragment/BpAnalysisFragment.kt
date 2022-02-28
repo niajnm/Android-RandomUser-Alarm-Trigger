@@ -21,6 +21,7 @@ import java.util.*
 class BpAnalysisFragment : Fragment() {
     var dt1: Long = 0
     var dt2: Long = 0
+
     var date = ""
     lateinit var calender: Calendar
     lateinit var calender2: Calendar

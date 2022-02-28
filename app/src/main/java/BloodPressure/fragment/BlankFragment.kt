@@ -20,8 +20,7 @@ class BlankFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-      val v= inflater.inflate(com.example.randomuser.R.layout.fragment_blank, container, false)
-
+      val v= inflater.inflate(R.layout.fragment_blank, container, false)
         val firstChartEntity = ChartEntity(Color.RED, firstEntity)
         val secondChartEntity = ChartEntity(Color.YELLOW, secondtEntity)
 
@@ -33,8 +32,6 @@ class BlankFragment : Fragment() {
         val lineChart = v.findViewById<LineChart>(R.id.lineChart)
         lineChart.setLegend(legendArr)
         lineChart.setList(list)
-
-
 
         return v
     }

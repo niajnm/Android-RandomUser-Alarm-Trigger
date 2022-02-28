@@ -174,6 +174,11 @@ class DatabaseHelper(var context: Context) :
         val db: SQLiteDatabase = writableDatabase
         db.execSQL("UPDATE $MULTI_ALARM_TABLE_NAME SET calender_time =$newtime WHERE calender_time=$cTime ")
     }
+//
+//    fun alarmUpdfgdfate(cTime: Long?, newtime: Long) {
+//        val db: SQLiteDatabase = writableDatabase
+//        db.execSQL("UPDATE "+MULTI_ALARM_TABLE_NAME+ "SET" +calender_time+ "=" +newtime+" WHERE" +calender_time+"="+cTime+ ")
+//    }
 
     fun alarmUpdateTwice(cTime2: Long?, newtime2: Long) {
         val db: SQLiteDatabase = writableDatabase
