@@ -63,15 +63,9 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-
-
         val  i = Intent(this, AlarmReceiver::class.java)
         this.startService(i)
-
-
-
     }
-
 
     override fun onBackPressed() {
        var builder = androidx.appcompat.app.AlertDialog.Builder(this)

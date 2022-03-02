@@ -48,11 +48,10 @@ class BpAnalysisFragment : Fragment() {
         val cursor6 = databaseHelper!!.DisplayChartData(key6)
         val Rdata = databaseHelper!!.loadBpData(cursor)
 
-
         val date2 = SimpleDateFormat("dd-M-yyyy").format(Date())
         v.srchDate2_id.text = date2
-      calender =Calendar.getInstance()
-        dt2=calender.timeInMillis
+        calender = Calendar.getInstance()
+        dt2 = calender.timeInMillis
 
         v.srchDate1_id.setOnClickListener {
 
@@ -104,10 +103,10 @@ class BpAnalysisFragment : Fragment() {
                     calender2.set(Calendar.YEAR, year)
 
 
-                    dt2 = calender2 .timeInMillis
+                    dt2 = calender2.timeInMillis
 
                     Log.d(TAG, "first time: $dt2")
-                   // searchAnalysis(dt1, dt2)
+                    // searchAnalysis(dt1, dt2)
 
                 }, y, m, d)
 

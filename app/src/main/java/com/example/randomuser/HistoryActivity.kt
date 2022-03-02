@@ -15,10 +15,8 @@ class HistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
-
         cartdisplay()
     }
-
 
     fun cartdisplay() {
         var databaseHelper = DatabaseHelper(this)
@@ -27,13 +25,9 @@ class HistoryActivity : AppCompatActivity() {
         val historyAdapter = HistoryAdapter(this, Rdata)
         recycler_history_id.adapter = historyAdapter
         recycler_history_id.layoutManager = LinearLayoutManager(this)
-
     }
 
-
-
     fun loadDataCart(cursor: Cursor): ArrayList<DataModel> {
-
         val dataList: ArrayList<DataModel> = ArrayList<DataModel>()
         if (cursor.count == 0) {
             Toast.makeText(this, "No data in database", Toast.LENGTH_LONG).show()
@@ -65,6 +59,4 @@ class HistoryActivity : AppCompatActivity() {
         intent.putExtra("dataAge", userAge)
         startActivity(intent)
     }
-
-
 }

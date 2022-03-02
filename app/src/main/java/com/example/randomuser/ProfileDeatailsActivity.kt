@@ -61,7 +61,7 @@ class ProfileDeatailsActivity : AppCompatActivity() {
             } else {
                 decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             }
-            window.setStatusBarColor(Color.TRANSPARENT)
+            window.statusBarColor = Color.TRANSPARENT
         }
     }
 }
