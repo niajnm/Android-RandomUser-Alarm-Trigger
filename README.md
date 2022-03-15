@@ -27,7 +27,7 @@ The project uses .
 |<img src="https://i.imgur.com/0l57g6W.jpg" width=200/>|<img src="https://i.imgur.com/FTBcTAd.jpg" width=200/>|<img src="https://i.imgur.com/WRJ8eVt.jpg" width=200/>|
 
 ## Demo
-|<img src="demo/demo.gif" width=300/>|
+|<img src="https://imgur.com/8wL8iAo.gif" width=300/>|
 |:----:|
 =======
 # Medical assistant
