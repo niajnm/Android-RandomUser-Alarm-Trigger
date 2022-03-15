@@ -1,4 +1,4 @@
-# App Scheduler
+# Medical assistant
 
 This project includes some features like medicine time alarm , alarm with presciption, blood preesure caculate analysis(include pie chart), doctors profile ,yoga assitant and world health news. The App uses Kotlin.
 
@@ -23,7 +23,7 @@ The project uses MVVM and MVI architecture pattern.
 
 
 ## Screenshots
-|<img src="https://imgur.com/a/ZVVk7ZE" width=200/>|<img src="screenshots/create.png" width=200/>|<img src="screenshots/select.png" width=200/>|
+|<img src="https://imgur.com/dPmkHwy" width=200/>|<img src="https://imgur.com/49wY2yt" width=200/>|<img src="https://imgur.com/Iv4L50R" width=200/>|
 |:----:|:----:|:----:|
 
 ## Demo
