@@ -18,8 +18,7 @@ The project uses .
 
 * [Retrofit2](https://riptutorial.com/retrofit2) - Load data from Api json pursing
 * [EazeGraph](https://github.com/blackfizz/EazeGraph) - EazeGraph is an Android library for creating beautiful and fancy charts. Its main goal was to create a lighweight library which is easy to use and highly customizeable with an "up-to-date"-look.
-* [Dagger 2](https://dagger.dev/dev-guide/) - For Dependency Injection.
-* [Kotlin Flow](https://developer.android.com/kotlin/flow) - To access data sequentially
+
 
 
 ## Screenshots
