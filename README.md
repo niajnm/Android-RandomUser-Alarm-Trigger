@@ -12,7 +12,7 @@ Add the Project to Android Studio or Intelij and build.All the required dependen
 
 ## Architecture
 
-The project uses MVVM and MVI architecture pattern.
+The project uses .
 
 ## Libraries 
 
@@ -24,10 +24,10 @@ The project uses MVVM and MVI architecture pattern.
 
 ## Screenshots
 |<img src="https://i.imgur.com/dPmkHwy.jpg" width=200/>|<img src="https://i.imgur.com/49wY2yt.jpg" width=200/>|<img src="https://imgur.com/Iv4L50R.jpg" width=200/>|
-|:----:|:----:|:----:|
+|<img src="https://i.imgur.com/0l57g6W.jpg" width=200/>|<img src="https://i.imgur.com/FTBcTAd.jpg" width=200/>|<img src="https://i.imgur.com/WRJ8eVt.jpg" width=200/>|
 
 ## Demo
 |<img src="demo/demo.gif" width=300/>|
 |:----:|
 =======
-# AppScheduler
+# Medical assistant
