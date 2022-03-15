@@ -23,7 +23,7 @@ The project uses MVVM and MVI architecture pattern.
 
 
 ## Screenshots
-|<img src="https://imgur.com/dPmkHwy" width=200/>|<img src="https://imgur.com/49wY2yt" width=200/>|<img src="https://imgur.com/Iv4L50R" width=200/>|
+|<img src="https://i.imgur.com/dPmkHwy.jpg" width=200/>|<img src="https://i.imgur.com/49wY2yt.jpg" width=200/>|<img src="https://imgur.com/Iv4L50R.jpg" width=200/>|
 |:----:|:----:|:----:|
 
 ## Demo
