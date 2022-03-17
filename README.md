@@ -1,4 +1,4 @@
-# Medical assistant
+# Patient Assistant Manager
 
 This project includes some features like medicine time alarm , alarm with presciption, blood preesure caculate analysis(include pie chart), doctors profile ,yoga assitant and world health news. The App uses Kotlin.
 
@@ -29,4 +29,4 @@ The project uses .
 |<img src="https://imgur.com/8wL8iAo.gif" width=300/>|
 |:----:|
 =======
-# Medical assistant
+#Patient Assistant Manager
