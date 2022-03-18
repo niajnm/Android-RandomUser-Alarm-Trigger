@@ -1,6 +1,6 @@
 # Patient Assistant Manager
 
-This project includes some features like medicine time alarm , alarm with presciption, blood preesure caculate analysis(include pie chart), doctors profile ,yoga assitant and world health news. The App uses Kotlin.
+This project includes some features like medicine time alarm, alarm with prescription, blood pressure calculates analysis(include pie chart), doctors profile, yoga assistant, and world health news. The App uses Kotlin.
 
 ### Note
 After installing the app you must give the "Doze mode" permission
