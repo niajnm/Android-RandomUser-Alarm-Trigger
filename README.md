@@ -17,6 +17,8 @@ The project uses .
 ## Libraries 
 
 * [Retrofit2](https://riptutorial.com/retrofit2) - Load data from Api json pursing
+* [AlarmManager](https://developer.android.com/reference/android/app/AlarmManager) - Firing alarm in time
+* [Push Notifiaction](https://developer.android.com/training/notify-user/build-notification) -  Notifications provide short, timely information about events in your app while it's not in use.
 * [EazeGraph](https://github.com/blackfizz/EazeGraph) - EazeGraph is an Android library for creating beautiful and fancy charts. Its main goal was to create a lighweight library which is easy to use and highly customizeable with an "up-to-date"-look.
 
 
