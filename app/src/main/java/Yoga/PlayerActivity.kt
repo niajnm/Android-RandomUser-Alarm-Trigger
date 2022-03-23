@@ -15,8 +15,6 @@ class PlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
 
-
-
         lifecycle.addObserver(youtube_player_view)
 
         youtube_player_view.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
@@ -31,7 +29,6 @@ class PlayerActivity : AppCompatActivity() {
 //                youtube_player_view.exitFullScreen()
               youtube_player_view.isFullScreen()
             //    youtube_player_view.toggleFullScreen()
-
             }
         })
     }

@@ -18,7 +18,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.randomuser.R
 import java.util.ArrayList
 
-class BpAdapter(var context: Context, var rdata: ArrayList<DataModel>,val fragment: bpHistoryFragment) :
+class BpAdapter(
+    var context: Context,
+    var rdata: ArrayList<DataModel>,
+    val fragment: bpHistoryFragment
+) :
     RecyclerView.Adapter<BpAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,7 +48,6 @@ class BpAdapter(var context: Context, var rdata: ArrayList<DataModel>,val fragme
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val userPosition = rdata[position]
-
 //        val id = userPosition.bpId!!
         val name = userPosition.bpName
         val date = userPosition.bpDate
@@ -59,34 +62,27 @@ class BpAdapter(var context: Context, var rdata: ArrayList<DataModel>,val fragme
         val position = userPosition.bpPosition
         val extrimity = userPosition.bpExtrimity
 
-        if (colorCode == 2) {
-           // holder.cardBack.setBackgroundColor(Color.parseColor("#014C04"))
-            //holder.viewResult.setBackgroundColor(Color.parseColor("#014C04"))
-            holder.viewResult.setTextColor(Color.parseColor("#014C04"))
-
-        } else if (colorCode == 4) {
-           // holder.cardBack.setBackgroundColor(Color.parseColor("#FFFF9800"))
-           // holder.viewResult.setBackgroundColor(Color.parseColor("#FFFF9800"))
-            holder.viewResult.setTextColor(Color.parseColor("#FFFF9800"))
-        } else if (colorCode == 6) {
-          //  holder.cardBack.setBackgroundColor(Color.parseColor("#FF5722"))
-           // holder.viewResult.setBackgroundColor(Color.parseColor("#FF5722"))
-            holder.viewResult.setTextColor(Color.parseColor("#FF5722"))
-        }else if (colorCode == 8) {
-           // holder.cardBack.setBackgroundColor(Color.parseColor("#EA2C1E"))
-            //holder.viewResult.setBackgroundColor(Color.parseColor("#EA2C1E"))
-            holder.viewResult.setTextColor(Color.parseColor("#EA2C1E"))
-        }else if (colorCode == 200) {
-           // holder.cardBack.setBackgroundColor(Color.parseColor("#00BCD4"))
-            //holder.viewResult.setBackgroundColor(Color.parseColor("#00BCD4"))
-            holder.viewResult.setTextColor(Color.parseColor("#00BCD4"))
-        }else if (colorCode == 10) {
-           // holder.cardBack.setBackgroundColor(Color.parseColor("#830202"))
-           // holder.viewResult.setBackgroundColor(Color.parseColor("#830202"))
-            holder.viewResult.setTextColor(Color.parseColor("#830202"))
+        when (colorCode) {
+            2 -> {
+                with(holder) { viewResult.setTextColor(Color.parseColor("#014C04")) }
+            }
+            4 -> {
+                holder.viewResult.setTextColor(Color.parseColor("#FFFF9800"))
+            }
+            6 -> {
+                holder.viewResult.setTextColor(Color.parseColor("#FF5722"))
+            }
+            8 -> {
+                holder.viewResult.setTextColor(Color.parseColor("#EA2C1E"))
+            }
+            200 -> {
+                holder.viewResult.setTextColor(Color.parseColor("#00BCD4"))
+            }
+            10 -> {
+                holder.viewResult.setTextColor(Color.parseColor("#830202"))
+            }
         }
 
-        // holder.viewName.text = name
         holder.viewDate.text = date
         holder.viewTime.text = time
         holder.viewSys.text = systolic
@@ -97,11 +93,8 @@ class BpAdapter(var context: Context, var rdata: ArrayList<DataModel>,val fragme
         holder.viewPosition.text = position
         holder.viewExtrimity.text = extrimity
 
-        //  holder.viewTime.text = time
-
         holder.itemView.setOnClickListener {
             //  ctx.passHistoryDetails(firstName,userGender,userMail,imgData,userlocation,userphone,userAge)
-
         }
 
         holder.deleteButton.setOnClickListener {
@@ -113,9 +106,8 @@ class BpAdapter(var context: Context, var rdata: ArrayList<DataModel>,val fragme
                 "Yes",
                 DialogInterface.OnClickListener { dialog, id ->
                     dialog.cancel()
-
                     val id = userPosition.bpId!!
-                        fragment.deleteItem(id)
+                    fragment.deleteItem(id)
                 })
 
             builder1.setNegativeButton(
@@ -127,7 +119,6 @@ class BpAdapter(var context: Context, var rdata: ArrayList<DataModel>,val fragme
 
             val nbutton: Button = alert11.getButton(DialogInterface.BUTTON_NEGATIVE)
             val pbutton: Button = alert11.getButton(DialogInterface.BUTTON_POSITIVE)
-
             nbutton.setTextColor(Color.parseColor("#3555d3"))
             pbutton.setTextColor(Color.parseColor("#3555d3"))
         }

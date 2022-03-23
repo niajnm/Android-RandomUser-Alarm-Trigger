@@ -65,10 +65,11 @@ class AlarmCreateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm_create)
+        alarmDataHelper = DatabaseHelper(this)
+        createNotificationChannel()
 
-        //searchView = findViewById(R.id.search_id);
         val medicinearray = resources.getStringArray(R.array.medicine_name)
-        medicine = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, medicinearray)
+       val medicine = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, medicinearray)
         autoCompleteText_id.threshold = 1
         autoCompleteText_id.setAdapter(medicine)
         autoCompleteText2_id.threshold = 1
@@ -77,7 +78,6 @@ class AlarmCreateActivity : AppCompatActivity() {
         autoCompleteText3_id.setAdapter(medicine)
         autoCompleteText4_id.threshold = 1
         autoCompleteText4_id.setAdapter(medicine)
-
 
         lyout2autoText1_id.threshold = 1
         lyout2autoText1_id.setAdapter(medicine)
@@ -134,18 +134,12 @@ class AlarmCreateActivity : AppCompatActivity() {
             }
         }
 
-
-        alarmDataHelper = DatabaseHelper(this)
-        createNotificationChannel()
-
         textTime_id.setOnClickListener {
             showTimePicker1()
         }
-
         textTime2_id.setOnClickListener {
             showTimePicker2()
         }
-
         btn_everyday.setOnClickListener {
             flag = 0
             flag2 = 0
@@ -186,7 +180,6 @@ class AlarmCreateActivity : AppCompatActivity() {
 
                 var key: Long = (System.currentTimeMillis() + 12)
                 autogenerateKey = key.toInt()
-
                 Log.d("mykey", "key:" + autogenerateKey)
 
                 if (dialogView!!.checkBox1.isChecked) {
@@ -212,7 +205,6 @@ class AlarmCreateActivity : AppCompatActivity() {
                     editor.putBoolean("mon", true)
                     editor.apply()
                     stringBuffer.append("Monday ")
-
                 } else {
                     editor.putBoolean("mon", false)
                     editor.apply()
@@ -222,7 +214,6 @@ class AlarmCreateActivity : AppCompatActivity() {
                     editor.putBoolean("tue", true)
                     editor.apply()
                     stringBuffer.append("Tuesday ")
-
                 } else {
                     editor.putBoolean("tue", false)
                     editor.apply()
@@ -232,7 +223,6 @@ class AlarmCreateActivity : AppCompatActivity() {
                     editor.putBoolean("wed", true)
                     editor.apply()
                     stringBuffer.append("Wednesday ")
-
                 } else {
                     editor.putBoolean("wed", false)
                     editor.apply()
@@ -242,7 +232,6 @@ class AlarmCreateActivity : AppCompatActivity() {
                     editor.putBoolean("thu", true)
                     editor.apply()
                     stringBuffer.append("Thursday ")
-
                 } else {
                     editor.putBoolean("thu", false)
                     editor.apply()
@@ -252,7 +241,6 @@ class AlarmCreateActivity : AppCompatActivity() {
                     editor.putBoolean("fri", true)
                     editor.apply()
                     stringBuffer.append("Friday ")
-
                 } else {
                     editor.putBoolean("fri", false)
                     editor.apply()
@@ -265,7 +253,7 @@ class AlarmCreateActivity : AppCompatActivity() {
 
         setAlarmButton_id.setOnClickListener {
 
-            medicine1 = autoCompleteText_id.text.toString()
+            medicine1 = autoCompleteText_id.getText().toString()
             medicine2 = autoCompleteText2_id.text.toString()
             medicine3 = autoCompleteText3_id.text.toString()
             medicine4 = autoCompleteText4_id.text.toString()
@@ -276,7 +264,6 @@ class AlarmCreateActivity : AppCompatActivity() {
             secondmedicine3 = lyout2autoText3_id.text.toString()
             secondmedicine4 = lyout2autoText4_id.text.toString()
             medicineName2 = "$secondmedicine1 $secondmedicine2 $secondmedicine3 $secondmedicine4"
-
 
             if (flag == 0 && flag2 == 0) {
                 var edit1 = textTime_id.text.toString()
@@ -365,7 +352,6 @@ class AlarmCreateActivity : AppCompatActivity() {
 
                 } else {
                     weekDayAlarm2()
-
                     val repReqCode = 1
                     val reqReqCode2 = 0
                     val totReadabletime = "$readableTime $readableTime_2"
@@ -412,14 +398,12 @@ class AlarmCreateActivity : AppCompatActivity() {
         val hourOfDay = 0
         val minute = 0
         val is24HourView = false
-
         //Theme_Holo_Light_Dialog
         //Theme_Holo_Light_DarkActionBar  //*Top Position
         val _timePickerDialog = TimePickerDialog(
             this, android.R.style.Theme_Holo_Light_Dialog,
             { timePicker, i, i1 ->
                 if (i == 12 && i1 > 0) {
-
                     readableTime = String.format("%02d", i) + ":" + String.format(
                         "%02d",
                         i1
@@ -470,7 +454,6 @@ class AlarmCreateActivity : AppCompatActivity() {
             this, android.R.style.Theme_Holo_Light_Dialog,
             { timePicker, i, i1 -> //*Return values
                 if (i == 12 && i1 > 0) {
-
                     readableTime_2 = String.format("%02d", i) + ":" + String.format(
                         "%02d",
                         i1
@@ -512,37 +495,16 @@ class AlarmCreateActivity : AppCompatActivity() {
         _timePickerDialog.show()
     }
 
-
-//   private fun setAlarm() {
-//        calender2.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY)
-//        if (calender2.timeInMillis < System.currentTimeMillis()) {
-//            calender2.add(Calendar.DAY_OF_YEAR, 7)
-//        }
-//        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//        val intent = Intent(this, AlarmReceiver::class.java)
-//        intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-//
-//        pi = PendingIntent.getBroadcast(this, 2, intent, 0)
-//
-//        alarmManager.setRepeating(
-//            AlarmManager.RTC_WAKEUP,
-//            calender2.timeInMillis,
-//            24 * 60 * 60 * 1000 * 7,
-//            pi
-//        )
-//
-//        Toast.makeText(this, "Alarm set succesfully", Toast.LENGTH_SHORT).show()
-//    }
-//  }
-
     private fun setAlarm1() {
 
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val thuReq: Long = Calendar.getInstance().timeInMillis + 1
         var reqReqCode = thuReq.toInt()
+
         if (calender.timeInMillis < System.currentTimeMillis()) {
             calender.add(Calendar.DAY_OF_YEAR, 1)
         }
+
         val alarmTimeMilsec = calender.timeInMillis
         val intent = Intent(this, AlarmReceiver::class.java)
         intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
@@ -755,8 +717,7 @@ class AlarmCreateActivity : AppCompatActivity() {
 
     private fun twiceRepeatingAlarm(dayOfWeek: Int, dayOfWeek2: Int, dayName: String) {
 
-        val totReadabletime = readableTime + " " + readableTime_2
-
+        val totReadabletime = "$readableTime $readableTime_2"
 
         //  calender = Calendar.getInstance()
         calender.set(Calendar.DAY_OF_WEEK, dayOfWeek)
@@ -814,12 +775,10 @@ class AlarmCreateActivity : AppCompatActivity() {
         )
 
         Toast.makeText(this, "Alarm set successfully", Toast.LENGTH_SHORT).show()
-
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-
         finish()
         val intent = Intent(this, AlarmActivity2::class.java)
         startActivity(intent)

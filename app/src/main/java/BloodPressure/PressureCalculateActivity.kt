@@ -16,11 +16,8 @@ class PressureCalculateActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pressure_calculate)
 
         bottom_navigation.setOnNavigationItemSelectedListener {
-
             when (it.itemId) {
-
                 R.id.menuScale_id -> {
-
                     val bpfragment = BpFragment()
                     val fragmentManager = supportFragmentManager
                     val fragmentTransaction = fragmentManager.beginTransaction()
@@ -28,20 +25,20 @@ class PressureCalculateActivity : AppCompatActivity() {
                     fragmentTransaction.commit()
                 }
                 R.id.menuBloodHistory_id -> {
-                    val bpfragment = bpHistoryFragment()
+                    val fragment = bpHistoryFragment()
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, bpfragment).commit()
+                        .replace(R.id.fragment_container, fragment).commit()
                 }
 
                 R.id.menuAnalysis_id -> {
-                    val bpfragment = BpAnalysisFragment()
+                    val fragment = BpAnalysisFragment()
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, bpfragment).commit()
+                        .replace(R.id.fragment_container, fragment).commit()
                 }
                 R.id.menuLineChart_id -> {
-                    val bpfragment = BlankFragment()
+                    val fragment = BlankFragment()
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, bpfragment).commit()
+                        .replace(R.id.fragment_container, fragment).commit()
                 }
             }
             true

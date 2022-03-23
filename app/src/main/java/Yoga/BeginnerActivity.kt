@@ -12,10 +12,6 @@ import org.eazegraph.lib.models.BarModel
 
 import org.eazegraph.lib.charts.BarChart
 
-
-
-
-
 class BeginnerActivity : AppCompatActivity() {
     var pieChart: PieChart? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,11 +19,9 @@ class BeginnerActivity : AppCompatActivity() {
         setContentView(com.example.randomuser.R.layout.activity_beginner)
         setData()
 
-
     }
 
     private fun setData() {
-
         // Set the percentage of language used
         val mBarChart = findViewById<View>(com.example.randomuser.R.id.barchart) as BarChart
 

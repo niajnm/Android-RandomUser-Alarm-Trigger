@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso
 class NewsAdapter (var context: Context) : RecyclerView.Adapter<NewsAdapter.MyViewHolder>() {
 
     private var userList = mutableListOf<NewsData.Article>()
-    val ctx = context as NewsActivity
+    private val ctx = context as NewsActivity
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var viewTitle: TextView = itemView.findViewById(R.id.TextViewTitle_id)
@@ -23,9 +23,7 @@ class NewsAdapter (var context: Context) : RecyclerView.Adapter<NewsAdapter.MyVi
         var viewDesc: TextView = itemView.findViewById(R.id.textviewDetail_id)
 
         var imageViewLogo: ImageView
-
         init {
-
             imageViewLogo = itemView.findViewById(R.id.imgFlag_id)
         }
     }
@@ -43,32 +41,20 @@ class NewsAdapter (var context: Context) : RecyclerView.Adapter<NewsAdapter.MyVi
         val newsPublish = userPosition.publishedAt
         val newsDesc = userPosition.description
         val newsUrl = userPosition.url
-//        val userlocation = userPosition.location.country.toString()
-//        val userphone = userPosition.phone
-//        val userAge = userPosition.nat
-//        val userImage2 = userPosition.picture.medium
         val imgData: String? = userPosition.urlToImage
-
 
         holder.viewTitle.text = newsTitle
         holder.viewDesc.text = newsDesc
         holder.viewPublish.text = newsPublish
-
-
         Picasso.get().load(imgData).into(holder.imageViewLogo)
 
-
         holder.itemView.setOnClickListener {
-
             ctx.passData(newsTitle,newsDesc,newsUrl)
-
         }
-
     }
 
     override fun getItemCount(): Int {
         return userList.size
-
         Log.d(ContentValues.TAG, "getItemCount: " + userList.size)
     }
 

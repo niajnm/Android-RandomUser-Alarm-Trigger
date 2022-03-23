@@ -9,7 +9,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object Retrofitnews {
-
     private const val BASE_URL = "https://newsapi.org/"
     private var retrofit: Retrofit? = null
     private val client: Retrofit?

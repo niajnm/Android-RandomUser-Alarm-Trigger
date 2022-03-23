@@ -19,25 +19,19 @@ import kotlinx.android.synthetic.main.activity_news.*
 import kotlinx.android.synthetic.main.activity_web_news.*
 
 class WebNewsActivity : AppCompatActivity() {
+    var URl: String? = null
 
-
-    var URl:String?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_news)
 
         setSupportActionBar(webToolbar)
         title = "Heath News"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val displayHomeAsUpEnabled = supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        webToolbar.setNavigationOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                onBackPressed()
-            }
-        })
-
-        val intent =intent
-         URl = intent.getStringExtra("url")
+        webToolbar.setNavigationOnClickListener { onBackPressed() }
+        val intent = intent
+        URl = intent.getStringExtra("url")
 
         webView_id.webViewClient = object : WebViewClient() {
 
@@ -48,7 +42,6 @@ class WebNewsActivity : AppCompatActivity() {
 
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
-
                 webProgress_id.visibility = View.GONE
 
             }
@@ -64,10 +57,7 @@ class WebNewsActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
-
         this.menuInflater.inflate(R.menu.webmenu_layout, menu)
-
         return super.onCreateOptionsMenu(menu)
     }
 

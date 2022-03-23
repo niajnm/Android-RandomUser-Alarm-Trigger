@@ -36,7 +36,6 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) :
         var imageViewLogo: ImageView = itemView.findViewById(R.id.alarmImg_id)
         var imageViewdelete: ImageView = itemView.findViewById(R.id.delete_button_id)
         var switch: Switch = itemView.findViewById(R.id.switch1)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -91,7 +90,6 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) :
 
             val nbutton: Button = alert11.getButton(DialogInterface.BUTTON_NEGATIVE)
             val pbutton: Button = alert11.getButton(DialogInterface.BUTTON_POSITIVE)
-
             nbutton.setTextColor(Color.parseColor("#3555d3"))
             pbutton.setTextColor(Color.parseColor("#3555d3"))
 
@@ -105,8 +103,7 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) :
                 val key = rdata[position].alarmMagicKey!!
                 editor.putBoolean("$key", true)
                 editor.apply()
-
-                    cntx.onAlarm(key)
+                cntx.onAlarm(key)
             } else {
                 val key = rdata[position].alarmMagicKey!!
                 editor.putBoolean("$key", false)
@@ -118,7 +115,6 @@ class AlarmAdapter(var context: Context, val rdata: ArrayList<DataModel>) :
 
     override fun getItemCount(): Int {
         return rdata.size
-
         Log.d(ContentValues.TAG, "getItemCount: " + rdata.size)
     }
 

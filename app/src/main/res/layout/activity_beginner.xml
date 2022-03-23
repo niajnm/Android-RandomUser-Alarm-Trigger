@@ -105,6 +105,16 @@
                 android:text="Java" />
 
         </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="7"
+            android:textColor="#000000"
+            app:cornerRadius="20dp"
+            app:backgroundTint="#334567"
+
+           />
 
     </LinearLayout>
 

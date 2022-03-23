@@ -40,6 +40,4 @@ class DataModel {
     var bpExtrimity:String?=null
 
 
-
-
 }

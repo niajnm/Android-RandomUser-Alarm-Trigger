@@ -21,13 +21,11 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
         var viewTitle: TextView = itemView.findViewById(R.id.textView_title)
         var viewPrice: TextView
         var viewDesc: TextView
-
         var imageViewLogo: ImageView
 
         init {
             viewPrice = itemView.findViewById(R.id.textViewCart_price)
             viewDesc = itemView.findViewById(R.id.textView_desc)
-
             imageViewLogo = itemView.findViewById(R.id.sampleImg_id)
         }
     }
@@ -40,7 +38,6 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val userPosition = userList[position]
-
         val firstName = userPosition.name.first.toString()
         val userGender = userPosition.gender
         val userMail = userPosition.email
@@ -50,14 +47,11 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
         val userImage2 = userPosition.picture.medium
         val imgData: String? = userPosition.picture.large
 
-
         holder.viewTitle.text = firstName
         holder.viewDesc.text = userGender
         holder.viewPrice.text = userMail
 
-
         Picasso.get().load(imgData).into(holder.imageViewLogo)
-
 
         holder.itemView.setOnClickListener {
 
@@ -70,14 +64,11 @@ class CustomAdapter(var context: Context) : RecyclerView.Adapter<CustomAdapter.M
                 userphone,
                 userAge
             )
-
         }
-
     }
 
     override fun getItemCount(): Int {
         return userList.size
-
         Log.d(TAG, "getItemCount: " + userList.size)
     }
 

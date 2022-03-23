@@ -26,7 +26,6 @@ class UserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
-
         setSupportActionBar(usertoolbar_id)
         title = "Users"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -38,11 +37,7 @@ class UserActivity : AppCompatActivity() {
         recycler!!.adapter = customAdapter
         recycler!!.layoutManager = LinearLayoutManager(this)
 
-        usertoolbar_id!!.setNavigationOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                onBackPressed()
-            }
-        })
+        usertoolbar_id!!.setNavigationOnClickListener { onBackPressed() }
     }
 
     private fun getapi() {
@@ -59,7 +54,7 @@ class UserActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
-                TODO("Not yet implemented")
+               // TODO("Not yet implemented")
             }
         })
     }
@@ -104,8 +99,7 @@ class UserActivity : AppCompatActivity() {
                             userAge,
                             userphone,
                             userMail,
-                            userImgData
-                        )
+                            userImgData)
                         break
                     }
                 }

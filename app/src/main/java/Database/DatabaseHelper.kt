@@ -71,7 +71,6 @@ class DatabaseHelper(var context: Context) :
 
         private const val BLOOD_TABLE =
             "CREATE TABLE $BLOODP_HISTORY_TABLE_NAME ($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$PNAME VARCHAR(50),$BPDATE DATE(20),$BPTIME VARCHAR(20),$SYS VARCHAR(10),$DIAS VARCHAR(10),$PULSE INT,$RESULT VARCHAR(20),$MAP INT,$COLORCODE INT,$CHARTVAL INT,$POSITION VARCHAR(20),$EXTRMITY VARCHAR(20),$CALMILISEC INT(500))"
-
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -116,9 +115,11 @@ class DatabaseHelper(var context: Context) :
     fun searchChartData(dateKey1: Long, dateKey2: Long): Cursor {
         val sqLiteDatabase = this.writableDatabase
         //  return sqLiteDatabase.rawQuery("SELECT * FROM $BLOODP_HISTORY_TABLE_NAME where date BETWEEN strftime('%y-%m-%d', '$dateKey1') AND strftime('%y-%m-%d', '$dateKey2')", null)
-        return sqLiteDatabase.rawQuery("SELECT * FROM $BLOODP_HISTORY_TABLE_NAME where $CALMILISEC BETWEEN $dateKey1 AND $dateKey2",null)
+        return sqLiteDatabase.rawQuery(
+            "SELECT * FROM $BLOODP_HISTORY_TABLE_NAME where $CALMILISEC BETWEEN $dateKey1 AND $dateKey2",
+            null
+        )
     }
-
 
     fun displayAlarmData(): Cursor {
         val sqLiteDatabase = this.writableDatabase
@@ -156,14 +157,6 @@ class DatabaseHelper(var context: Context) :
         )
     }
 
-//
-//    fun DisplayChartData(magicKey: Int): Cursor {
-//        val sqLiteDatabase = this.writableDatabase
-//        return sqLiteDatabase.rawQuery(
-//            "BLOODP_HISTORY$BLOODP_HISTORY_TABLE_NAME WHERE color_cd= $magicKey",
-//            null
-//        )
-//    }
 
     fun dataDelete(numId: String?) {
         val db: SQLiteDatabase = getWritableDatabase()
@@ -190,6 +183,7 @@ class DatabaseHelper(var context: Context) :
         db.execSQL("DELETE FROM $ALARM_TABLE_NAME WHERE frn_Key=$numId")
         db.execSQL("DELETE FROM $MULTI_ALARM_TABLE_NAME WHERE frn_Key=$numId")
     }
+
     fun deleteBpData(id: Int) {
         val db: SQLiteDatabase = writableDatabase
         db.execSQL("DELETE FROM $BLOODP_HISTORY_TABLE_NAME WHERE id_=$id")
@@ -367,7 +361,6 @@ class DatabaseHelper(var context: Context) :
         } else {
             while (cursor.moveToNext()) {
                 val alarmData = DataModel()
-
                 alarmData.alarmTMilsec = cursor.getLong(3)
                 alarmData.alarmTMilsec2 = cursor.getLong(4)
                 alarmData.requestCode = cursor.getInt(5)
@@ -431,10 +424,5 @@ class DatabaseHelper(var context: Context) :
             }
         }
         return dataList
-
     }
-
-
-
-
 }

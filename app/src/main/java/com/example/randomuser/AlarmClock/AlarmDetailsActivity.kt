@@ -23,7 +23,5 @@ class AlarmDetailsActivity : AppCompatActivity() {
         MedicineTextView_id.text= rcvMedicineName
         MedicineTextView2_id.text= rcvMedicineName2
         alarmDaysView_id.text= rcvDays
-
-
     }
 }

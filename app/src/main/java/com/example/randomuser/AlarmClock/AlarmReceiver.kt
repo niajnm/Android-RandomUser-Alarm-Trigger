@@ -19,7 +19,6 @@ class AlarmReceiver : BroadcastReceiver() {
         Log.d("this", "notify")
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
             val intent = Intent(context, AlarmActivity2::class.java)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
@@ -41,9 +40,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
             val notificationManagerCompat = NotificationManagerCompat.from(context)
             notificationManagerCompat.notify(123, builder.build())
-
         }
-
     }
-
 }

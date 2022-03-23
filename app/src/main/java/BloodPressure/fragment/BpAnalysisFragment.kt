@@ -21,16 +21,15 @@ import java.util.*
 class BpAnalysisFragment : Fragment() {
     var dt1: Long = 0
     var dt2: Long = 0
-
     var date = ""
     lateinit var calender: Calendar
     lateinit var calender2: Calendar
     var mPieChart: PieChart? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val v = inflater.inflate(R.layout.fragment_bp_analysis, container, false)
         mPieChart = v.findViewById<View>(R.id.piechart) as PieChart
         var databaseHelper = DatabaseHelper(requireContext())
@@ -47,14 +46,12 @@ class BpAnalysisFragment : Fragment() {
         val cursor5 = databaseHelper!!.DisplayChartData(key5)
         val cursor6 = databaseHelper!!.DisplayChartData(key6)
         val Rdata = databaseHelper!!.loadBpData(cursor)
-
         val date2 = SimpleDateFormat("dd-M-yyyy").format(Date())
         v.srchDate2_id.text = date2
         calender = Calendar.getInstance()
         dt2 = calender.timeInMillis
 
         v.srchDate1_id.setOnClickListener {
-
             val cal = Calendar.getInstance()
             val y = cal.get(Calendar.YEAR)
             val m = cal.get(Calendar.MONTH)
@@ -62,7 +59,6 @@ class BpAnalysisFragment : Fragment() {
 
             val datepickerdialog =
                 DatePickerDialog(requireContext(), { view, year, monthOfYear, dayOfMonth ->
-
                     var month = monthOfYear + 1
                     //  date = "$dayOfMonth-$month-$year"
                     srchDate1_id.text = "$dayOfMonth-$month-$year"
@@ -75,16 +71,12 @@ class BpAnalysisFragment : Fragment() {
                     calender.set(Calendar.SECOND, 0)
                     calender.set(Calendar.MILLISECOND, 0)
                     dt1 = calender.timeInMillis
-
                     Log.d(TAG, "first time: $dt1")
-
                 }, y, m, d)
-
             datepickerdialog.show()
         }
 
         v.srchDate2_id.setOnClickListener {
-
             val cal = Calendar.getInstance()
             val y = cal.get(Calendar.YEAR)
             val m = cal.get(Calendar.MONTH)
@@ -93,21 +85,15 @@ class BpAnalysisFragment : Fragment() {
 
             val datepickerdialog =
                 DatePickerDialog(requireContext(), { view, year, monthOfYear, dayOfMonth ->
-
                     var month = monthOfYear + 1
                     srchDate2_id.text = "$dayOfMonth-$month-$year"
-
                     calender2 = Calendar.getInstance()
                     calender2.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                     calender2.set(Calendar.MONTH, monthOfYear)
                     calender2.set(Calendar.YEAR, year)
-
-
                     dt2 = calender2.timeInMillis
-
                     Log.d(TAG, "first time: $dt2")
                     // searchAnalysis(dt1, dt2)
-
                 }, y, m, d)
 
             datepickerdialog.show()
@@ -169,11 +155,8 @@ class BpAnalysisFragment : Fragment() {
                 Color.parseColor("#830202")
             )
         )
-
         mPieChart.startAnimation()
-
         return v
-
     }
 
     private fun searchAnalysis(d1: Long, d2: Long) {
@@ -190,38 +173,25 @@ class BpAnalysisFragment : Fragment() {
         Log.d(TAG, "searchAnalysis: ${searchData.indices}")
 
         for (i in searchData.indices) {
-            if (searchData[i].bpColor == 2) {
-                normal += +1
-
-            } else if (searchData[i].bpColor == 4) {
-                elevate += +1
-
-            } else if (searchData[i].bpColor == 6) {
-                high1 += +1
-
-            } else if (searchData[i].bpColor == 8) {
-                high2 += +1
-
-            } else if (searchData[i].bpColor == 10) {
-                high3 += +1
-
-            } else if (searchData[i].bpColor == 200) {
-                low += +1
-
+            when (searchData[i].bpColor) {
+                2 -> normal += +1
+                4 -> elevate += +1
+                6 -> high1 += +1
+                8 -> high2 += +1
+                10 -> high3 += +1
+                200 -> low += +1
             }
-
-
         }
         chart(low, normal, elevate, high1, high2, high3)
     }
 
     private fun chart(low: Int, normal: Int, elevate: Int, high1: Int, high2: Int, high3: Int) {
         tvlow.setText(Integer.toString(low))
-        tvR.setText(Integer.toString(normal))
-        tvPython.setText(Integer.toString(elevate))
-        tvCPP.setText(Integer.toString(high1))
-        tvJava.setText(Integer.toString(high2))
-        tvh3.setText(Integer.toString(high3))
+        tvR.text = Integer.toString(normal)
+        tvPython.text = Integer.toString(elevate)
+        tvCPP.text = Integer.toString(high1)
+        tvJava.text = Integer.toString(high2)
+        tvh3.text = Integer.toString(high3)
 
         // Set the data and color to the pie chart
         mPieChart?.clearChart()
@@ -233,45 +203,5 @@ class BpAnalysisFragment : Fragment() {
         mPieChart?.addPieSlice(PieModel("High S3", high3.toFloat(), Color.parseColor("#830202")))
 
         mPieChart?.startAnimation()
-
     }
-
-//    private fun setData() {
-//
-//        // Set the percentage of language used
-//        tvR.setText(Integer.toString(40))
-//        tvPython.setText(Integer.toString(30))
-//        tvCPP.setText(Integer.toString(5))
-//        tvJava.setText(Integer.toString(25))
-//
-//        // Set the data and color to the pie chart
-//        pieChart!!.addPieSlice(
-//            PieModel(
-//                "R", tvR.getText().toString().toFloat(),
-//                Color.parseColor("#FFA726")
-//            )
-//        )
-//        pieChart!!.addPieSlice(
-//            PieModel(
-//                "Python", tvPython.getText().toString().toFloat(),
-//                Color.parseColor("#66BB6A")
-//            )
-//        )
-//        pieChart!!.addPieSlice(
-//            PieModel(
-//                "C++", tvCPP.getText().toString().toFloat(),
-//                Color.parseColor("#EF5350")
-//            )
-//        )
-//        pieChart!!.addPieSlice(
-//            PieModel(
-//                "Java", tvJava.getText().toString().toFloat(),
-//                Color.parseColor("#29B6F6")
-//            )
-//        )
-//
-//        // To animate the pie chart
-//        pieChart!!.startAnimation()
-//    }
-
 }

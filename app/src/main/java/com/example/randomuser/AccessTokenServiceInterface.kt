@@ -9,9 +9,6 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AccessTokenServiceInterface {
-
     @GET("?results=50")
-    fun getRandomUser() : Call<User>
-
-
+    fun getRandomUser(): Call<User>
 }

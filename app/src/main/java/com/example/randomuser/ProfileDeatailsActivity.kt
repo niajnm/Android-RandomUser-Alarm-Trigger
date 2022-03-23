@@ -40,7 +40,6 @@ class ProfileDeatailsActivity : AppCompatActivity() {
 
         if (gender == "male") {
             Gender_img_id.setImageResource(R.drawable.male)
-
         } else {
             Gender_img_id.setImageResource(R.drawable.female)
         }

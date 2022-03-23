@@ -37,14 +37,13 @@ class bpHistoryFragment : Fragment() {
 
         dataShowList()
         calender2 = Calendar.getInstance()
-        dt2=calender2.timeInMillis
+        dt2 = calender2.timeInMillis
 
         v.history_ok_button.setOnClickListener {
             searchAnalysis(dt1, dt2)
         }
 
         v.historyDate1_id.setOnClickListener {
-
             val cal = Calendar.getInstance()
             val y = cal.get(Calendar.YEAR)
             val m = cal.get(Calendar.MONTH)
@@ -52,12 +51,9 @@ class bpHistoryFragment : Fragment() {
 
             val datepickerdialog =
                 DatePickerDialog(requireContext(), { view, year, monthOfYear, dayOfMonth ->
-
                     var month = monthOfYear + 1
                     val d1 = "$dayOfMonth-$month-$year"
                     historyDate1_id.text = d1
-
-
                     calender = Calendar.getInstance()
                     calender.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                     calender.set(Calendar.MONTH, monthOfYear)
@@ -68,13 +64,11 @@ class bpHistoryFragment : Fragment() {
 
                     dt1 = calender.timeInMillis
                 }, y, m, d)
-
             datepickerdialog.show()
         }
 
 
         v.historyDate2_id.setOnClickListener {
-
             val cal = Calendar.getInstance()
             val y = cal.get(Calendar.YEAR)
             val m = cal.get(Calendar.MONTH)
@@ -91,12 +85,10 @@ class bpHistoryFragment : Fragment() {
                     calender2.set(Calendar.MONTH, monthOfYear)
                     calender2.set(Calendar.YEAR, year)
                     dt2 = calender2.timeInMillis
-
                 }, y, m, d)
 
             datepickerdialog.show()
         }
-
         return v
     }
 
@@ -116,13 +108,12 @@ class bpHistoryFragment : Fragment() {
     }
 
     fun dataShowList() {
-
-       var databaseHelper = DatabaseHelper(requireContext())
-         val cursor = databaseHelper!!.DisplayBPData()
-         val Rdata = databaseHelper!!.loadBpData(cursor)
-         val bpadapter = BpAdapter(requireActivity(), Rdata, this@bpHistoryFragment)
-         recycle!!.adapter = bpadapter
-         recycle!!.layoutManager = LinearLayoutManager(requireContext())
+        var databaseHelper = DatabaseHelper(requireContext())
+        val cursor = databaseHelper!!.DisplayBPData()
+        val Rdata = databaseHelper!!.loadBpData(cursor)
+        val bpadapter = BpAdapter(requireActivity(), Rdata, this@bpHistoryFragment)
+        recycle!!.adapter = bpadapter
+        recycle!!.layoutManager = LinearLayoutManager(requireContext())
 
     }
 

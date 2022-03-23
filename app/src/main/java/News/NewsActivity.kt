@@ -29,7 +29,6 @@ class NewsActivity : AppCompatActivity() {
     private var country: String = "us"
     var countryAdapter: ArrayAdapter<String>? = null
     var countryArray: Array<String>? = null
-
     var context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +38,6 @@ class NewsActivity : AppCompatActivity() {
         newsAdapter = NewsAdapter(this)
         newsRecycler_id.adapter = newsAdapter
         newsRecycler_id.layoutManager = LinearLayoutManager(this)
-
-
         getNewsData(country)
 
         setSupportActionBar(newsToolbar_id)
@@ -54,7 +51,6 @@ class NewsActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
 
         this.menuInflater.inflate(R.menu.country_menu, menu)
         val item = menu!!.findItem(R.id.menuCountry_id)
@@ -104,7 +100,6 @@ class NewsActivity : AppCompatActivity() {
     }
 
     private fun getNewsData(country: String) {
-
         val api = Retrofitnews.getClient()
         val call = api.getNews("health", country, APIKEY)
 
@@ -113,7 +108,6 @@ class NewsActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     newsProgress_id.visibility= View.GONE
                     val code = response.code()
-
                     var list = mutableListOf<NewsData.Article>()
                     val value = response.body()!!.articles as MutableList<NewsData.Article>
                     list.addAll(value)
@@ -123,13 +117,11 @@ class NewsActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<NewsData>, t: Throwable) {
-                TODO("Not yet implemented")
+             //   TODO("Not yet implemented")
             }
 
         })
-
     }
-
 
     fun passData(newsTitle: String, newsDesc: String, newsUrl: String) {
 
@@ -138,36 +130,43 @@ class NewsActivity : AppCompatActivity() {
         intent.putExtra("desc", newsDesc)
         intent.putExtra("url", newsUrl)
         startActivity(intent)
-
     }
 
     private fun countrySet(s: String) {
-        if (s == "USA") {
-            country = "us"
-            getNewsData(country)
-        } else if (s == "India") {
-            country = "in"
-            getNewsData(country)
-        } else if (s == "China") {
-            country = "cn"
-            getNewsData(country)
-        } else if (s == "Argentina") {
-            country = "ar"
-            getNewsData(country)
-        } else if (s == "Hongkong") {
-            country = "hk"
-            getNewsData(country)
-        } else if (s == "Canada") {
-            country = "ca"
-            getNewsData(country)
-        } else if (s == "Japan") {
-            country = "jp"
-            getNewsData(country)
-        } else {
-            Toast.makeText(context, "This Country is Developing ", Toast.LENGTH_SHORT)
-                .show()
+        when (s) {
+            "USA" -> {
+                country = "us"
+                getNewsData(country)
+            }
+            "India" -> {
+                country = "in"
+                getNewsData(country)
+            }
+            "China" -> {
+                country = "cn"
+                getNewsData(country)
+            }
+            "Argentina" -> {
+                country = "ar"
+                getNewsData(country)
+            }
+            "Hongkong" -> {
+                country = "hk"
+                getNewsData(country)
+            }
+            "Canada" -> {
+                country = "ca"
+                getNewsData(country)
+            }
+            "Japan" -> {
+                country = "jp"
+                getNewsData(country)
+            }
+            else -> {
+                Toast.makeText(context, "This Country is Developing ", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
-
 
 }
